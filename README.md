@@ -66,7 +66,22 @@ You may see some warnings during installation -- these can be safely ignored.
 
 Verify the installation by running `pbiviz` on its own. You should see a list of supported commands.
 
-### 3. Enable Developer Mode in Power BI
+### 3. SSL Certificate (if needed)
+
+The developer visual is served over HTTPS from your local machine. If your browser blocks the connection or the visual fails to load, you may need to generate and trust a local SSL certificate:
+
+```
+pbiviz --install-cert
+```
+
+This opens the Certificate Import Wizard. Follow the prompts:
+- Select "Local Machine" and click Next
+- Click "Place all certificates in the following store", click Browse, and select "Trusted Root Certification Authorities"
+- Click Next, then Finish
+
+You may need to run the command as Administrator. You only need to do this once per machine.
+
+### 4. Enable Developer Mode in Power BI
 
 You need to enable developer mode so that Power BI loads your locally hosted visual.
 
