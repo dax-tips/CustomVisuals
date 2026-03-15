@@ -4,32 +4,30 @@ A collection of Power BI custom visuals built with Visual Studio Code and GitHub
 
 The source code for every visual is included. You are welcome to download, modify, learn from, and build upon any of them.
 
-
 ## What's Included
 
 ### Data Visuals
 
-| Visual | Description |
-|--------|-------------|
-| **[histogram](histogram/)** | A D3-based histogram that bins numeric values into configurable buckets and displays frequency distribution with gradient colouring. |
-| **[pieChart](pieChart/)** | A D3 pie chart with cross-filtering support, tooltips, and click selection for use in Power BI reports. |
-| **[scatterPlotSmallMultiples](scatterPlotSmallMultiples/)** | A scatter plot chart with a small multiples layout, displaying multiple scatter plots in a grid for comparing categories side by side. |
-| **[kpiAchievementCard](kpiAchievementCard/)** | A KPI achievement card showing actual vs target values with progress bars, threshold markers, and achievement badges. Supports display unit formatting and customisable grid layouts. |
-| **[multiFacetColumnChart](multiFacetColumnChart/)** | A multi-faceted column chart for comparing measures across categories. |
-| **[qrCodeGenerator](qrCodeGenerator/)** | A QR code generator with error correction levels, custom centre icons, rounded corners, card styling, and responsive sizing. |
+| Visual                                                         | Description                                                                                                                                                                           |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[histogram](histogram/)**                                 | A D3-based histogram that bins numeric values into configurable buckets and displays frequency distribution with gradient colouring.                                                  |
+| **[pieChart](pieChart/)**                                   | A D3 pie chart with cross-filtering support, tooltips, and click selection for use in Power BI reports.                                                                               |
+| **[scatterPlotSmallMultiples](scatterPlotSmallMultiples/)** | A scatter plot chart with a small multiples layout, displaying multiple scatter plots in a grid for comparing categories side by side.                                                |
+| **[kpiAchievementCard](kpiAchievementCard/)**               | A KPI achievement card showing actual vs target values with progress bars, threshold markers, and achievement badges. Supports display unit formatting and customisable grid layouts. |
+| **[multiFacetColumnChart](multiFacetColumnChart/)**         | A multi-faceted column chart for comparing measures across categories.                                                                                                                |
+| **[qrCodeGenerator](qrCodeGenerator/)**                     | A QR code generator with error correction levels, custom centre icons, rounded corners, card styling, and responsive sizing.                                                          |
 
 ### Games and Interactive Visuals
 
-| Visual | Description |
-|--------|-------------|
-| **[flightSimulator](flightSimulator/)** | A 3D flight simulator with a cockpit view, five working instruments, terrain generation, cloud rendering, collision detection, and engine audio synthesis. Features Dutch countryside scenery with windmills and airports. |
-| **[retroArcade](retroArcade/)** | Five retro-styled arcade games in one visual: Snake, Tetris, Space Shooter, Neon Drift, and Synth Labyrinth. Includes CRT scan line effects and a boss key that shows a fake spreadsheet. |
-| **[musicStudioEqualizer](musicStudioEqualizer/)** | A music player with eight real-time audio visualisation styles, five visual themes, playlist management, audio effects, and a DJ mashup mode with dual-track playback and crossfader. |
-| **[gameArcadeSixPack](gameArcadeSixPack/)** | Six mini-games: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper. |
-| **[minesweeper](minesweeper/)** | Classic Minesweeper with customisable difficulty levels, a timer, and visual themes. |
-| **[matrixAndMaze](matrixAndMaze/)** | A maze game where you navigate office politics to find four Power BI treasures before I.T. Admin shuts you down. |
-| **[abelTasmanVoyage](abelTasmanVoyage/)** | An animated visualisation of Abel Tasman's 1642 voyage from Jakarta to New Zealand, with a 2D old-world map view and a rotating 3D globe view showing a modern return flight to the Netherlands. |
-
+| Visual                                               | Description                                                                                                                                                                                                                |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[flightSimulator](flightSimulator/)**           | A 3D flight simulator with a cockpit view, five working instruments, terrain generation, cloud rendering, collision detection, and engine audio synthesis. Features Dutch countryside scenery with windmills and airports. |
+| **[retroArcade](retroArcade/)**                   | Five retro-styled arcade games in one visual: Snake, Tetris, Space Shooter, Neon Drift, and Synth Labyrinth. Includes CRT scan line effects and a boss key that shows a fake spreadsheet.                                  |
+| **[musicStudioEqualizer](musicStudioEqualizer/)** | A music player with eight real-time audio visualisation styles, five visual themes, playlist management, audio effects, and a DJ mashup mode with dual-track playback and crossfader.                                      |
+| **[gameArcadeSixPack](gameArcadeSixPack/)**       | Six mini-games: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper.                                                                                                                   |
+| **[minesweeper](minesweeper/)**                   | Classic Minesweeper with customisable difficulty levels, a timer, and visual themes.                                                                                                                                       |
+| **[matrixAndMaze](matrixAndMaze/)**               | A maze game where you navigate office politics to find four Power BI treasures before I.T. Admin shuts you down.                                                                                                           |
+| **[abelTasmanVoyage](abelTasmanVoyage/)**         | An animated visualisation of Abel Tasman's 1642 voyage from Jakarta to New Zealand, with a 2D old-world map view and a rotating 3D globe view showing a modern return flight to the Netherlands.                           |
 
 ## Setting Up Your Machine
 
@@ -75,6 +73,7 @@ pbiviz --install-cert
 ```
 
 This opens the Certificate Import Wizard. Follow the prompts:
+
 - Select "Local Machine" and click Next
 - Click "Place all certificates in the following store", click Browse, and select "Trusted Root Certification Authorities"
 - Click Next, then Finish
@@ -101,7 +100,6 @@ Note: this setting resets each session. You need to enable it again each time yo
 
 Once enabled, a new visual called "Developer Visual" (with a tools icon) appears in the Visualisations pane. This visual connects to the local development server started by `pbiviz start`.
 
-
 ## Creating a New Custom Visual from Scratch
 
 To create a brand new visual project:
@@ -109,12 +107,10 @@ To create a brand new visual project:
 ```
 pbiviz new MyVisualName
 cd MyVisualName
-npm install
 pbiviz start
 ```
 
 This creates a project folder with the standard structure, installs dependencies, and starts the development server. Open Power BI, add the Developer Visual to your report, and you'll see your visual running live with hot-reload as you edit the code.
-
 
 ## Working with Visuals from This Repo
 
@@ -149,9 +145,9 @@ pbiviz package
 ```
 
 The output file appears in the `dist/` folder. You can then import it into Power BI via:
+
 - Power BI Desktop: Visualisations pane > "..." > "Import a visual from a file"
 - Power BI Service: Report edit mode > Visualisations pane > "..." > "Import a visual from a file"
-
 
 ## Project Structure
 
@@ -171,10 +167,10 @@ myVisual/
 ```
 
 The key files to look at when exploring a visual:
+
 - **src/visual.ts** -- where the rendering logic lives
 - **capabilities.json** -- defines what data fields the visual accepts and what formatting options appear in the properties pane
 - **pbiviz.json** -- the visual's display name, description, and author info
-
 
 ## Tips for Development
 
@@ -183,7 +179,6 @@ The key files to look at when exploring a visual:
 - If the visual doesn't appear or shows a broken state, try refreshing the report page
 - Each visual can only connect to one `pbiviz start` server at a time -- stop one before starting another
 - The `capabilities.json` file controls what appears in the Fields and Format panes for your visual
-
 
 ## Contributing
 
@@ -195,11 +190,9 @@ Contributions are welcome. Whether you want to fix a bug, add a feature, improve
 
 This project exists to help people learn how to create Power BI custom visuals. There are no gatekeepers here.
 
-
 ## License
 
 These visuals are provided as-is for learning and experimentation. Use them however you like.
-
 
 ## Author
 
