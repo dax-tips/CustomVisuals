@@ -1,0 +1,436 @@
+/* Abel Tasman Voyage - Power BI Custom Visual Styles */
+
+// ============================================
+// Variables
+// ============================================
+@sepia-light: #f4e4bc;
+@sepia-dark: #8b7355;
+@sepia-medium: #c9a959;
+@parchment: #f5deb3;
+@ink-brown: #3d2914;
+@ocean-old: #c5d9e8;
+@ocean-modern: #1a4b6e;
+@land-old: #d4c4a8;
+@land-modern: #4a7c4e;
+@route-color: #8b0000;
+@flight-color: #ff6b35;
+@dutch-orange: #ff6b00;
+@dutch-blue: #21468b;
+
+// Continent colors for old map (muted, sepia tones)
+@oceania-old: #c9b896;
+@asia-old: #d4c4a8;
+@europe-old: #c9b896;
+@africa-old: #d9c9a9;
+@americas-old: #c4b490;
+@antarctica-old: #e8e0d0;
+
+// Continent colors for globe (modern, distinct)
+@oceania-globe: #6b8e5a;
+@asia-globe: #7c9a6b;
+@europe-globe: #5d8a50;
+@africa-globe: #8fa977;
+@americas-globe: #6d9460;
+@antarctica-globe: #f5f5f5;
+
+// ============================================
+// Main Container
+// ============================================
+.voyage-visual {
+    cursor: pointer;
+    overflow: hidden;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background-color: #1a1a2e; // Very dark grey/navy background
+}
+
+// Stars styling
+.star {
+    fill: #ffffff;
+    opacity: 0.8;
+}
+
+.star-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+// ============================================
+// Old World Map Styles
+// ============================================
+.old-map-background {
+    fill: #d4c4a0; // Parchment/aged paper color
+}
+
+// Old map country styling
+.old-map-land {
+    stroke: @ink-brown;
+    stroke-width: 2px;
+    transition: fill 0.3s ease;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
+    
+    &.continent-oceania { fill: @oceania-old; }
+    &.continent-asia { fill: @asia-old; }
+    &.continent-europe { fill: @europe-old; }
+    &.continent-africa { fill: @africa-old; }
+    &.continent-americas { fill: @americas-old; }
+    &.continent-antarctica { fill: @antarctica-old; }
+}
+
+// Highlighted countries on old map (voyage-relevant locations)
+.old-map-highlight {
+    fill: @sepia-medium !important;
+    stroke: @ink-brown;
+    stroke-width: 1.5px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+// Country borders - old map style (hand-drawn effect)
+.old-map-border {
+    stroke: @ink-brown;
+    stroke-width: 1.5px;
+    stroke-dasharray: none;
+    opacity: 0.8;
+}
+
+// ============================================
+// Sea Monsters & Dragons
+// ============================================
+.sea-monster {
+    fill: @sepia-dark;
+    stroke: @ink-brown;
+    stroke-width: 1.5px;
+    opacity: 0.7;
+    
+    &:hover {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.dragon {
+    fill: none;
+    stroke: @ink-brown;
+    stroke-width: 2px;
+    opacity: 0.6;
+}
+
+.monster-text {
+    fill: @ink-brown;
+    font-size: 10px;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    opacity: 0.7;
+}
+
+// Voyage info text
+.voyage-info {
+    fill: @ink-brown;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    
+    &.voyage-duration {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    &.voyage-detail {
+        font-style: italic;
+        font-size: 12px;
+        opacity: 0.8;
+    }
+}
+
+// Route path - old nautical chart style
+.route-path {
+    stroke: @route-color;
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.3));
+}
+
+// ============================================
+// Globe View Styles
+// ============================================
+.globe-ocean {
+    fill: #1e5799;
+    stroke: #0d3a5c;
+    stroke-width: 2px;
+    filter: drop-shadow(0 0 20px rgba(26, 75, 110, 0.5));
+}
+
+// Globe country styling - HIGH CONTRAST for visibility
+.globe-land {
+    stroke: #1a3d1a;
+    stroke-width: 2.5px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4));
+    
+    &.continent-oceania { fill: #8fbc8f; } // Light sea green
+    &.continent-asia { fill: #9acd32; } // Yellow green
+    &.continent-europe { fill: #98fb98; } // Pale green - bright!
+    &.continent-africa { fill: #daa520; } // Goldenrod - distinct
+    &.continent-americas { fill: #90ee90; } // Light green
+    &.continent-antarctica { fill: #f5f5f5; } // White
+}
+
+// Flight info styling
+.flight-info {
+    fill: white;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    
+    &.flight-duration {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    &.flight-detail {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+}
+
+// Highlighted countries on globe (Netherlands!)
+.globe-highlight {
+    fill: @dutch-orange !important;
+    stroke: #fff;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 15px @dutch-orange);
+}
+
+// Country borders - globe style
+.globe-border {
+    stroke: rgba(0, 0, 0, 0.4);
+    stroke-width: 1px;
+}
+
+.graticule {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 0.8px;
+}
+
+// ============================================
+// Map Decorations
+// ============================================
+.compass-rose {
+    .compass-line {
+        stroke: @ink-brown;
+        stroke-width: 2px;
+    }
+    
+    .compass-label {
+        fill: @ink-brown;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Georgia', serif;
+    }
+    
+    .compass-circle {
+        fill: none;
+        stroke: @ink-brown;
+        stroke-width: 1.5px;
+    }
+}
+
+.wave-decoration {
+    stroke: @sepia-dark;
+    stroke-width: 2px;
+    opacity: 0.5;
+}
+
+// ============================================
+// Location Markers
+// ============================================
+.location {
+    .location-marker {
+        stroke: @ink-brown;
+        stroke-width: 2px;
+    }
+    
+    .location-label {
+        fill: @ink-brown;
+        font-size: 12px;
+        font-weight: bold;
+        font-family: 'Georgia', serif;
+        text-shadow: 1px 1px 0 @sepia-light,
+                     -1px -1px 0 @sepia-light,
+                     1px -1px 0 @sepia-light,
+                     -1px 1px 0 @sepia-light;
+    }
+}
+
+.location-start .location-marker {
+    fill: @dutch-orange;
+}
+
+.location-waypoint .location-marker {
+    fill: @sepia-medium;
+}
+
+.location-end .location-marker {
+    fill: @dutch-blue;
+}
+
+// ============================================
+// Ship Animation
+// ============================================
+.ship {
+    .ship-hull {
+        fill: #5d4037;
+        stroke: @ink-brown;
+        stroke-width: 1.5px;
+    }
+    
+    .ship-mast {
+        stroke: @ink-brown;
+        stroke-width: 2px;
+    }
+    
+    .ship-sail {
+        fill: #f5f5dc;
+        stroke: @ink-brown;
+        stroke-width: 1px;
+    }
+    
+    .ship-flag {
+        fill: @dutch-orange;
+        stroke: none;
+    }
+}
+
+// ============================================
+// Flight Path & Plane
+// ============================================
+.flight-trail {
+    fill: none;
+    stroke: @flight-color;
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-dasharray: 8, 4;
+    filter: drop-shadow(0 0 5px @flight-color);
+}
+
+.plane {
+    .plane-body {
+        fill: #e0e0e0;
+        stroke: #424242;
+        stroke-width: 1px;
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4));
+    }
+}
+
+// ============================================
+// Arrival Marker
+// ============================================
+.arrival-marker {
+    .arrival-pulse {
+        fill: @dutch-orange;
+        opacity: 0.6;
+    }
+    
+    .arrival-point {
+        fill: @dutch-orange;
+        stroke: white;
+        stroke-width: 2px;
+    }
+    
+    .arrival-label {
+        fill: white;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Arial', sans-serif;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+}
+
+// ============================================
+// Title Styles
+// ============================================
+.map-title {
+    fill: @ink-brown;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    letter-spacing: 3px;
+}
+
+.globe-title {
+    fill: white;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    text-shadow: 0 0 20px rgba(77, 166, 255, 0.8),
+                 0 0 40px rgba(77, 166, 255, 0.4),
+                 2px 2px 4px rgba(0,0,0,0.8);
+    letter-spacing: 2px;
+}
+
+// Flight info panel styling
+.flight-info {
+    fill: white;
+    font-family: 'Arial', sans-serif;
+    
+    &.flight-duration {
+        font-size: 22px;
+        font-weight: bold;
+        fill: #ffffff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+    
+    &.flight-detail {
+        font-size: 13px;
+        fill: #e0e0e0;
+    }
+}
+
+// ============================================
+// Instruction Text
+// ============================================
+.instruction-text {
+    fill: @sepia-dark;
+    font-size: 14px;
+    font-style: italic;
+    font-family: 'Georgia', serif;
+    opacity: 0.8;
+    
+    &.globe-instruction {
+        fill: rgba(255, 255, 255, 0.7);
+        font-family: 'Arial', sans-serif;
+    }
+}
+
+// ============================================
+// Transitions & Animations
+// ============================================
+.map-group, .globe-group, .ship-group, .plane-group {
+    transition: opacity 0.5s ease-in-out;
+}
+
+// Hover effects
+.voyage-visual:hover {
+    .instruction-text {
+        opacity: 1;
+    }
+}
+
+// ============================================
+// Responsive adjustments
+// ============================================
+@media (max-width: 600px) {
+    .map-title, .globe-title {
+        font-size: 18px;
+    }
+    
+    .location-label {
+        font-size: 10px;
+    }
+    
+    .instruction-text {
+        font-size: 12px;
+    }
+}

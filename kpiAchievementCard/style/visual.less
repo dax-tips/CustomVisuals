@@ -1,0 +1,116 @@
+.kpi-grid {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    overflow: auto;
+}
+
+.kpi-card {
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #e8d5f5 0%, #d5f0e3 100%);
+    border-radius: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.kpi-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.kpi-badge {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+
+    &.achieved {
+        color: #4B0082;
+        border: 2px solid #4B0082;
+        background: rgba(75, 0, 130, 0.05);
+    }
+
+    &.not-achieved {
+        color: #c0392b;
+        border: 2px solid #c0392b;
+        background: rgba(192, 57, 43, 0.05);
+    }
+}
+
+.kpi-value {
+    font-size: 48px;
+    font-weight: 800;
+    color: #1a1a2e;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.kpi-details {
+    font-size: 14px;
+    margin-bottom: 16px;
+
+    .kpi-detail-label {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .kpi-detail-value {
+        color: #555;
+    }
+
+    .kpi-separator {
+        color: #999;
+        margin: 0 4px;
+    }
+}
+
+.kpi-progress-wrapper {
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.kpi-progress-track {
+    position: relative;
+    height: 14px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    overflow: visible;
+}
+
+.kpi-progress-fill {
+    height: 100%;
+    border-radius: 7px;
+    transition: width 0.6s ease;
+}
+
+.kpi-threshold-marker {
+    position: absolute;
+    top: -4px;
+    width: 5px;
+    height: 22px;
+    background: #1a1a2e;
+    border-radius: 3px;
+    transform: translateX(-50%);
+}
+
+.kpi-threshold-label {
+    position: absolute;
+    top: 18px;
+    font-size: 11px;
+    color: #666;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}

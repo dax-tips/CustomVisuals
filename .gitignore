@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+.tmp/
+dist/
+
+# IDE
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Archive - not published
+_archive/
+
+# Package lock files (each visual can regenerate)
+package-lock.json
+
+# Large binary assets (too big for GitHub - download separately)
+flightSimulator/assets/ground-map.png
+flightSimulator/assets/ground-map-base64.txt
+flightSimulator/src/ground-map-data.ts

@@ -1,0 +1,26 @@
+{
+    "visual": {
+        "name": "abelTasmanVoyage",
+        "displayName": "Abel Tasman Voyage",
+        "guid": "abelTasmanVoyage0EFF6E5F1FE14F62A94F6C8910BFE529",
+        "visualClassName": "Visual",
+        "version": "1.0.0.0",
+        "description": "An interactive visual showing Abel Tasman's 1642 voyage from Jakarta to New Zealand and a modern flight back to the Netherlands",
+        "supportUrl": "http://dax.tips",
+        "gitHubUrl": "https://github.com/PhilSeaworthy/abelTasmanVoyage"
+    },
+    "apiVersion": "5.3.0",
+    "author": {
+        "name": "Phil Seamark",
+        "email": "phil@dax.tips"
+    },
+    "assets": {
+        "icon": "assets/icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": [],
+    "version": "1.0.0.0"
+}

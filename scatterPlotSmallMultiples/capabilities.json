@@ -1,0 +1,134 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "X-Axis",
+            "name": "xAxis",
+            "kind": "Measure",
+            "requiredTypes": [
+                {
+                    "numeric": true
+                },
+                {
+                    "integer": true
+                }
+            ]
+        },
+        {
+            "displayName": "Y-Axis", 
+            "name": "yAxis",
+            "kind": "Measure",
+            "requiredTypes": [
+                {
+                    "numeric": true
+                },
+                {
+                    "integer": true
+                }
+            ]
+        },
+        {
+            "displayName": "Category (Small Multiples)",
+            "name": "category",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Size",
+            "name": "size",
+            "kind": "Measure",
+            "requiredTypes": [
+                {
+                    "numeric": true
+                },
+                {
+                    "integer": true
+                }
+            ]
+        },
+        {
+            "displayName": "Legend",
+            "name": "legend",
+            "kind": "Grouping"
+        }
+    ],
+    "objects": {
+        "dataPoint": {
+            "properties": {
+                "defaultColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fill": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fillRule": {
+                    "type": {
+                        "fill": {}
+                    }
+                },
+                 "fontSize": {
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "category"
+                    },
+                    "dataReductionAlgorithm": {
+                        "top": {}
+                    }
+                },
+                "values": {
+                    "group": {
+                        "by": "legend",
+                        "select": [
+                            {
+                                "bind": {
+                                    "to": "xAxis"
+                                }
+                            },
+                            {
+                                "bind": {
+                                    "to": "yAxis"  
+                                }
+                            },
+                            {
+                                "bind": {
+                                    "to": "size"
+                                }
+                            }
+                        ],
+                        "dataReductionAlgorithm": {
+                            "top": {}
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "privileges": []
+}

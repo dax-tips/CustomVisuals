@@ -1,0 +1,189 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "QR Text",
+            "name": "qrText",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "qrSettings": {
+            "properties": {
+                "defaultText": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "foregroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "backgroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "errorCorrection": {
+                    "type": {
+                        "enumeration": [
+                            { "value": "L", "displayName": "Low (7%)" },
+                            { "value": "M", "displayName": "Medium (15%)" },
+                            { "value": "Q", "displayName": "Quartile (25%)" },
+                            { "value": "H", "displayName": "High (30%)" }
+                        ]
+                    }
+                },
+                "quietZone": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "finderRadius": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "moduleRadius": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "cardAppearance": {
+            "properties": {
+                "showTitle": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "titleText": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "showSubtitle": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "subtitleText": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "showCardBackground": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "cardBackgroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "cornerRadius": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "showShadow": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "cardPadding": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "centerIcon": {
+            "properties": {
+                "iconType": {
+                    "type": {
+                        "enumeration": [
+                            { "value": "none", "displayName": "None" },
+                            { "value": "circle", "displayName": "Circle" },
+                            { "value": "square", "displayName": "Square" },
+                            { "value": "diamond", "displayName": "Diamond" },
+                            { "value": "image", "displayName": "Custom Image URL" }
+                        ]
+                    }
+                },
+                "iconSizePercent": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "iconBackgroundColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "iconColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "iconImageUrl": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "iconText": {
+                    "type": {
+                        "text": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                { "qrText": { "max": 1 } }
+            ],
+            "categorical": {
+                "values": {
+                    "select": [
+                        {
+                            "bind": {
+                                "to": "qrText"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "privileges": [
+        {
+            "name": "WebAccess",
+            "essential": false,
+            "parameters": ["*"]
+        }
+    ]
+}

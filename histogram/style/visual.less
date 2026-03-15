@@ -1,0 +1,98 @@
+p {
+    font-size: 20px;
+    font-weight: bold;
+    em {
+        background: yellow;
+        padding: 5px;
+        
+    }
+}
+
+.histogram {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bar rect {
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 1px;
+    rx: 2px;
+    ry: 2px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
+    
+    &:hover {
+        stroke: rgba(255, 255, 255, 1);
+        stroke-width: 2px;
+        filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25));
+        transform: scaleY(1.05);
+        transform-origin: bottom;
+    }
+}
+
+.axis {
+    font-size: 11px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    
+    path, line {
+        stroke: #6c757d;
+        stroke-width: 1px;
+        shape-rendering: crispEdges;
+    }
+    
+    text {
+        fill: #495057;
+        font-weight: 400;
+    }
+    
+    &.x {
+        .tick text {
+            text-anchor: middle;
+        }
+    }
+    
+    &.y {
+        .tick text {
+            text-anchor: end;
+        }
+    }
+}
+
+.grid-line {
+    stroke: rgba(108, 117, 125, 0.2);
+    stroke-width: 0.5px;
+    stroke-dasharray: 2,2;
+}
+
+.empty {
+    fill: #6c757d;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.tooltip {
+    position: absolute;
+    background: rgba(33, 37, 41, 0.95);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: opacity 0.2s ease;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgba(33, 37, 41, 0.95) transparent transparent transparent;
+    }
+}

@@ -1,0 +1,147 @@
+/* Game Visual Styles */
+
+.game-visual-root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #0f0f23;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.game-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    background: #16213e;
+    border-bottom: 1px solid #0f3460;
+    flex-shrink: 0;
+    height: 28px;
+    box-sizing: border-box;
+}
+
+.game-toolbar-label {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.game-select {
+    background: #1a1a2e;
+    color: #0ff;
+    border: 1px solid #0f3460;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        border-color: #0ff;
+    }
+}
+
+.game-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+/* Snake game */
+.snake-hud {
+    color: #0ff;
+    font-size: 13px;
+    padding: 3px 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.snake-canvas {
+    display: block;
+    outline: none;
+    border: 1px solid #0f3460;
+}
+
+.snake-msg {
+    color: #e94560;
+    font-size: 12px;
+    text-align: center;
+    padding: 3px 0;
+    min-height: 18px;
+    flex-shrink: 0;
+}
+
+/* Pong game */
+.pong-hud {
+    color: #0ff;
+    font-size: 13px;
+    padding: 3px 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.pong-canvas {
+    display: block;
+    outline: none;
+    border: 1px solid #0f3460;
+}
+
+.pong-msg {
+    color: #e94560;
+    font-size: 12px;
+    text-align: center;
+    padding: 3px 0;
+    min-height: 18px;
+    flex-shrink: 0;
+}
+
+/* Breakout game */
+.breakout-hud {
+    color: #f5a623;
+    font-size: 13px;
+    padding: 3px 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.breakout-canvas {
+    display: block;
+    outline: none;
+    border: 1px solid #0f3460;
+}
+
+.breakout-msg {
+    color: #e94560;
+    font-size: 12px;
+    text-align: center;
+    padding: 3px 0;
+    min-height: 18px;
+    flex-shrink: 0;
+}
+
+/* Tetris game */
+.tetris-hud {
+    color: #bd10e0;
+    font-size: 13px;
+    padding: 3px 0;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.tetris-canvas {
+    display: block;
+    outline: none;
+    border: 1px solid #0f3460;
+}
+
+.tetris-msg {
+    color: #e94560;
+    font-size: 12px;
+    text-align: center;
+    padding: 3px 0;
+    min-height: 18px;
+    flex-shrink: 0;
+}

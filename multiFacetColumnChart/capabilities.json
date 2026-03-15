@@ -1,0 +1,216 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Category Data",
+            "name": "category",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Facet Data",
+            "name": "facet",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Measure Data",
+            "name": "measure",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "dataPoint": {
+            "properties": {
+                "defaultColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "chartLayout": {
+            "properties": {
+                "barPadding": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "marginTop": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "marginBottom": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "marginLeft": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "marginRight": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "facetPadding": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "maxFacetsPerRow": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "axis": {
+            "properties": {
+                "showXAxis": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showYAxis": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "axisFontSize": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "axisColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "rotateXLabels": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "yAxisTicks": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "facetTitles": {
+            "properties": {
+                "showFacetTitles": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "facetTitleFontSize": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "facetTitleColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "facetTitleWeight": {
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Normal",
+                                "value": "normal"
+                            },
+                            {
+                                "displayName": "Bold",
+                                "value": "bold"
+                            },
+                            {
+                                "displayName": "Lighter",
+                                "value": "lighter"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "general": {
+            "properties": {
+                "showTooltips": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "animationDuration": {
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "hoverOpacity": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "category": { "max": 1 },
+                    "measure": { "max": 1 }
+                },
+                {
+                    "category": { "max": 1 },
+                    "facet": { "max": 1 },
+                    "measure": { "max": 1 }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "select": [
+                        {
+                            "for": { "in": "category" }
+                        },
+                        {
+                            "for": { "in": "facet" }
+                        }
+                    ],
+                    "dataReductionAlgorithm": {
+                        "top": {
+                            "count": 1000
+                        }
+                    }
+                },
+                "values": {
+                    "select": [
+                        {
+                            "bind": { "to": "measure" }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "privileges": []
+}

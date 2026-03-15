@@ -1,0 +1,26 @@
+{
+    "visual": {
+        "name": "patrick",
+        "displayName": "patrick",
+        "guid": "patrick2EAC9121D1EA4887B4040B8031887B66",
+        "visualClassName": "Visual",
+        "version": "1.0.0.0",
+        "description": "A Power BI custom visual for interactive gaming experiences.",
+        "supportUrl": "dax.tips",
+        "gitHubUrl": ""
+    },
+    "apiVersion": "5.3.0",
+    "author": {
+        "name": "Phil Seamark",
+        "email": "philip.seamark@microsoft.com"
+    },
+    "assets": {
+        "icon": "assets/game-icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": [],
+    "version": "1.0.0.0"
+}

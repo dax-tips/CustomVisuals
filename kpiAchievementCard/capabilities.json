@@ -1,0 +1,151 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Category",
+            "name": "category",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Actual Value",
+            "name": "actualValue",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Target Value",
+            "name": "targetValue",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "cardAppearance": {
+            "properties": {
+                "gradientStart": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "gradientEnd": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "borderRadius": {
+                    "type": { "numeric": true }
+                }
+            }
+        },
+        "titleSettings": {
+            "properties": {
+                "titleFontSize": {
+                    "type": { "numeric": true }
+                },
+                "titleColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                }
+            }
+        },
+        "valueSettings": {
+            "properties": {
+                "valueFontSize": {
+                    "type": { "numeric": true }
+                },
+                "valueColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "displayUnits": {
+                    "type": { "formatting": { "labelDisplayUnits": true } }
+                },
+                "decimalPlaces": {
+                    "type": { "numeric": true }
+                }
+            }
+        },
+        "badgeSettings": {
+            "properties": {
+                "showBadge": {
+                    "type": { "bool": true }
+                },
+                "achievedColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "notAchievedColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                }
+            }
+        },
+        "detailsSettings": {
+            "properties": {
+                "showDetails": {
+                    "type": { "bool": true }
+                },
+                "detailsFontSize": {
+                    "type": { "numeric": true }
+                },
+                "labelColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "detailValueColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                }
+            }
+        },
+        "progressBarSettings": {
+            "properties": {
+                "showProgressBar": {
+                    "type": { "bool": true }
+                },
+                "barColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "trackColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                },
+                "barHeight": {
+                    "type": { "numeric": true }
+                },
+                "thresholdPercent": {
+                    "type": { "numeric": true }
+                },
+                "showThreshold": {
+                    "type": { "bool": true }
+                },
+                "markerColor": {
+                    "type": { "fill": { "solid": { "color": true } } }
+                }
+            }
+        },
+        "gridLayout": {
+            "properties": {
+                "columns": {
+                    "type": { "numeric": true }
+                },
+                "gap": {
+                    "type": { "numeric": true }
+                },
+                "innerPadding": {
+                    "type": { "numeric": true }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "category": { "min": 1 },
+                    "actualValue": { "max": 1 },
+                    "targetValue": { "max": 1 }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": { "in": "category" },
+                    "dataReductionAlgorithm": { "top": { "count": 30 } }
+                },
+                "values": {
+                    "select": [
+                        { "bind": { "to": "actualValue" } },
+                        { "bind": { "to": "targetValue" } }
+                    ]
+                }
+            }
+        }
+    ],
+    "privileges": []
+}

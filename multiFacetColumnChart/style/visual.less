@@ -1,0 +1,76 @@
+.columnChart {
+    width: 100%;
+    height: 100%;
+    
+    .bar {
+        cursor: pointer;
+        // Hover effects are now handled in JavaScript with custom opacity values
+    }
+    
+    .facetTitle {
+        font-family: Arial, sans-serif;
+        text-anchor: middle;
+        // Font size, color, and weight are now set dynamically from formatting settings
+    }
+    
+    .facetGroup {
+        .x-axis, .y-axis {
+            // Font size and colors are now set dynamically from formatting settings
+            
+            .domain {
+                stroke-width: 1px;
+            }
+            
+            .tick line {
+                stroke-width: 1px;
+            }
+            
+            .tick text {
+                font-family: Arial, sans-serif;
+            }
+        }
+        
+        .x-axis {
+            .tick text {
+                text-anchor: middle;
+            }
+        }
+        
+        .y-axis {
+            .tick text {
+                text-anchor: end;
+            }
+        }
+    }
+    
+    // Default styles for when formatting is not yet applied
+    .x-axis, .y-axis {
+        .domain {
+            stroke: #666;
+            stroke-width: 1px;
+        }
+        
+        .tick line {
+            stroke: #666;
+            stroke-width: 1px;
+        }
+        
+        .tick text {
+            fill: #666;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+        }
+    }
+    
+    .x-axis {
+        .tick text {
+            text-anchor: middle;
+        }
+    }
+    
+    .y-axis {
+        .tick text {
+            text-anchor: end;
+        }
+    }
+}

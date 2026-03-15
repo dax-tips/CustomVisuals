@@ -1,0 +1,31 @@
+/* Flight Simulator Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:host {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.visual-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+canvas:focus {
+    cursor: crosshair;
+    outline: none;
+}

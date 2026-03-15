@@ -1,0 +1,26 @@
+{
+  "visual": {
+    "name": "minesweeperVisual",
+    "displayName": "Minesweeper Game",
+    "guid": "minesweeperVisual19AF649229AF457C803344176B7E4B78",
+    "visualClassName": "Visual",
+    "version": "1.0.0.0",
+    "description": "A fully functional Minesweeper game with customizable difficulty levels, timer, and visual themes",
+    "supportUrl": "https://github.com/microsoft/powerbi-visuals-tools",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "5.3.0",
+  "author": {
+    "name": "Power BI Developer",
+    "email": "developer@powerbi.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": null,
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": [],
+  "version": "1.0.0.0"
+}
