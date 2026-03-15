@@ -35,9 +35,19 @@ The source code for every visual is included. You are welcome to download, modif
 
 These instructions are for Windows. You only need to do this once.
 
+Full details are on the official Microsoft documentation page: [Set up your environment for developing a Power BI visual](https://learn.microsoft.com/en-us/power-bi/developer/visuals/environment-setup).
+
+### Prerequisites
+
+- [Visual Studio Code](https://code.visualstudio.com/) (or another IDE)
+- [Windows PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell) version 4 or later
+- A [Power BI Pro or Premium Per User (PPU)](https://www.microsoft.com/power-platform/products/power-bi/pricing) account (free trial available)
+
 ### 1. Install Node.js
 
-Download and install the LTS version from [nodejs.org](https://nodejs.org/). After installation, open a new terminal and verify it's working:
+Download the latest LTS version from [nodejs.org](https://nodejs.org/) and run the installer. Accept the defaults and **restart your computer** after installation.
+
+Open a new terminal and verify it's working:
 
 ```
 node --version
@@ -46,44 +56,33 @@ npm --version
 
 ### 2. Install the Power BI Visual Tools (pbiviz)
 
-```
-npm install -g powerbi-visuals-tools
-```
-
-Verify the installation:
+Open PowerShell and run:
 
 ```
-pbiviz --version
+npm i -g powerbi-visuals-tools@latest
 ```
 
-### 3. Set up the SSL certificate
+You may see some warnings during installation -- these can be safely ignored.
 
-Power BI developer visuals are served over HTTPS from your local machine. You need to generate and trust a local SSL certificate so the browser doesn't block the connection:
+Verify the installation by running `pbiviz` on its own. You should see a list of supported commands.
 
-```
-pbiviz --install-cert
-```
+### 3. Enable Developer Mode in Power BI
 
-This creates a certificate and opens the Certificate Import Wizard. Follow the prompts:
-- Select "Local Machine" and click Next
-- Click "Place all certificates in the following store", click Browse, and select "Trusted Root Certification Authorities"
-- Click Next, then Finish
-
-You may need to run the command as Administrator. You only need to do this once per machine.
-
-### 4. Enable the Developer Visual in Power BI
-
-#### Power BI Service (app.powerbi.com)
-
-1. Open any report in Edit mode
-2. Click Format > Settings (gear icon) or go to File > Options and settings > Options
-3. Under the Report settings section, enable "Developer visual"
+You need to enable developer mode so that Power BI loads your locally hosted visual.
 
 #### Power BI Desktop
 
 1. Go to File > Options and settings > Options
-2. Under the "Report settings" section, tick "Enable developer visual for testing"
-3. Click OK and restart Power BI Desktop if prompted
+2. In the left panel, under "Current file", select "Report settings"
+3. Tick the "Develop a visual" checkbox
+4. Click OK
+
+Note: this setting resets each session. You need to enable it again each time you open Power BI Desktop.
+
+#### Power BI Service (app.powerbi.com)
+
+1. Go to Settings (gear icon) > Admin portal, or ask your admin to enable it
+2. Under Tenant settings, enable "Developer mode" for your organisation or security group
 
 Once enabled, a new visual called "Developer Visual" (with a tools icon) appears in the Visualisations pane. This visual connects to the local development server started by `pbiviz start`.
 
