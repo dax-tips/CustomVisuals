@@ -6,7 +6,7 @@
         "visualClassName": "Visual",
         "version": "1.0.0.0",
         "description": "An interactive flight simulator custom visual for Power BI. Features cockpit view, 5 instruments, realistic physics, Dutch countryside scenery with windmills, airports, collision detection, and fun crash messages!",
-        "supportUrl": "https://github.com/dax-tips/pbivizflightsim/issues",
+        "supportUrl": "https://dax.tips",
         "gitHubUrl": "https://github.com/dax-tips/pbivizflightsim"
     },
     "apiVersion": "5.3.0",

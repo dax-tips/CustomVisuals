@@ -1,18 +1,18 @@
 {
     "visual": {
         "name": "miguelColumnChart",
-        "displayName": "MiguelColumnChart",
+        "displayName": "Multi-Facet Column Chart",
         "guid": "miguelColumnChartFFB9B0DC3E704E75B659816DF185C061",
         "visualClassName": "Visual",
         "version": "1.0.0.0",
         "description": "Multi-faceted column chart",
-        "supportUrl": "dax.tips",
+        "supportUrl": "https://dax.tips",
         "gitHubUrl": ""
     },
     "apiVersion": "5.3.0",
     "author": {
-        "name": "Phil and Miguel",
-        "email": "philip.seamark@microsoft.com"
+        "name": "Phil Seamark",
+        "email": "phil@dax.tips"
     },
     "assets": {
         "icon": "assets/icon.png"

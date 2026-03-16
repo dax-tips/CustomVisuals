@@ -1,18 +1,18 @@
 {
     "visual": {
         "name": "patrick",
-        "displayName": "patrick",
+        "displayName": "Game Arcade Six Pack",
         "guid": "patrick2EAC9121D1EA4887B4040B8031887B66",
         "visualClassName": "Visual",
         "version": "1.0.0.0",
-        "description": "A Power BI custom visual for interactive gaming experiences.",
-        "supportUrl": "dax.tips",
+        "description": "Six mini-games for Power BI: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper",
+        "supportUrl": "https://dax.tips",
         "gitHubUrl": ""
     },
     "apiVersion": "5.3.0",
     "author": {
         "name": "Phil Seamark",
-        "email": "philip.seamark@microsoft.com"
+        "email": "phil@dax.tips"
     },
     "assets": {
         "icon": "assets/game-icon.png"

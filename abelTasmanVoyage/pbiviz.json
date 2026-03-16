@@ -6,7 +6,7 @@
         "visualClassName": "Visual",
         "version": "1.0.0.0",
         "description": "An interactive visual showing Abel Tasman's 1642 voyage from Jakarta to New Zealand and a modern flight back to the Netherlands",
-        "supportUrl": "http://dax.tips",
+        "supportUrl": "https://dax.tips",
         "gitHubUrl": "https://github.com/PhilSeaworthy/abelTasmanVoyage"
     },
     "apiVersion": "5.3.0",
