@@ -1,134 +1,63 @@
-# ✈️ Power BI Flight Simulator
+# Flight Simulator
 
-A fully interactive flight simulator built as a Power BI Custom Visual. Perfect for keynote presentations, demos, or just having fun!
+A 3D flight simulator built as a Power BI custom visual. Features a cockpit view, five working instruments, terrain generation, collision detection, and engine audio synthesis. The scenery is a Dutch countryside with windmills, buildings, and two airports.
 
-![Flight Simulator](https://img.shields.io/badge/Power%20BI-Custom%20Visual-yellow)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+## What It Does
 
-## 🎮 Features
+Drop this visual onto a Power BI report page, click it to focus, and fly. You get a first-person cockpit view with a horizon, ground terrain, sky, and scattered 3D objects. Five flight instruments on the cockpit panel respond in real time to your inputs.
 
-- **Full cockpit view** with realistic horizon and sky
-- **5 flight instruments**: Artificial Horizon, Altimeter, Airspeed Indicator, Heading Indicator, Vertical Speed
-- **Realistic physics**: Pitch, roll, throttle, and coordinated turns
-- **Dutch countryside scenery** with windmills 🇳🇱, buildings, trees, houses, and hangars
-- **Two airports** with runways for takeoff and landing attempts
-- **Collision detection** - crash into buildings, windmills, or the ground!
-- **Crash screen** with fun data-themed messages
-- **Mini-map radar** (toggle with M key)
-- **"Data Navigator" panel** - humorous fake analytics metrics for presentations
+This was built for keynotes and demos -- it tends to get a good reaction when you alt-tab from a slide deck into a live Power BI report and start flying around.
 
-## 🎯 Controls
+## Controls
 
-| Key | Action |
-|-----|--------|
-| ↑ / ↓ | Pitch (nose up/down) |
-| ← / → | Roll (bank left/right) |
-| W / S | Throttle (increase/decrease) |
-| A / D | Rudder (yaw left/right) |
-| SPACE | Level flight (auto-correct pitch & roll) |
-| R | Reset / Restart |
-| M | Toggle mini-map |
+| Key          | Action                          |
+| ------------ | ------------------------------- |
+| Up / Down    | Pitch (nose up / nose down)     |
+| Left / Right | Roll (bank left / right)        |
+| W / S        | Throttle (increase / decrease)  |
+| A / D        | Rudder (yaw left / right)       |
+| Space        | Level flight (auto-correct)     |
+| R            | Reset / restart                 |
+| M            | Toggle mini-map                 |
 
-## 🚀 Getting Started
+## Instruments
 
-### Prerequisites
+- **Artificial Horizon** -- shows pitch and roll attitude
+- **Altimeter** -- current altitude above ground
+- **Airspeed Indicator** -- current forward speed
+- **Heading Indicator** -- compass bearing
+- **Vertical Speed** -- rate of climb or descent
 
-- [Node.js](https://nodejs.org/) (v16 or higher recommended)
-- [Power BI Desktop](https://powerbi.microsoft.com/desktop/)
-- Power BI Visual Tools (`pbiviz`)
+## Features
 
-### Installation
+- WebGL-accelerated ground rendering with texture mipmaps
+- Synthesised engine audio that responds to throttle position
+- Collision detection with buildings, windmills, trees, and the ground
+- Crash screen with data-themed messages ("Your data warehouse has collapsed", "Branching error detected", and others)
+- Mini-map radar display showing nearby objects
+- "Data Navigator" panel with tongue-in-cheek fake analytics metrics, handy for presentations
+- Two airports with rendered runways
+- Dutch countryside scenery: windmills, houses, hangars, trees
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/dax-tips/pbivizflightsim.git
-   cd pbivizflightsim
-   ```
+## Data Roles
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+| Field    | Type     | Description                       |
+| -------- | -------- | --------------------------------- |
+| Category | Grouping | Category values for data binding  |
+| Measure  | Measure  | Numeric values for data binding   |
 
-3. **Install Power BI Visual Tools** (if not already installed)
-   ```bash
-   npm install -g powerbi-visuals-tools
-   ```
+The flight simulator runs independently of bound data. Data roles are available for future integration.
 
-4. **Start the development server**
-   ```bash
-   npm start
-   ```
-
-5. **Enable Developer Visual in Power BI Desktop**
-   - Open Power BI Desktop
-   - Go to **File → Options and settings → Options**
-   - Navigate to **Security** under the GLOBAL section
-   - Check **Enable custom visual debugging using the developer visual**
-   - Click OK and restart Power BI Desktop
-
-6. **Add the Developer Visual**
-   - In Power BI Desktop, click the **Developer Visual** icon in the Visualizations pane
-   - The flight simulator will load automatically!
-
-### Building for Production
-
-To package the visual as a `.pbiviz` file for distribution:
-
-```bash
-npm run package
-```
-
-The packaged visual will be in the `dist/` folder.
-
-## 🏗️ Project Structure
+## How to Run
 
 ```
-pbivizflightsim/
-├── assets/
-│   └── icon.png           # Visual icon
-├── src/
-│   ├── visual.ts          # Main visual logic (flight sim code)
-│   └── settings.ts        # Visual settings/formatting
-├── style/
-│   └── visual.less        # Styles
-├── capabilities.json      # Power BI capabilities definition
-├── pbiviz.json           # Visual metadata
-├── package.json          # NPM dependencies
-└── tsconfig.json         # TypeScript configuration
+cd flightSimulator
+npm install
+pbiviz start
 ```
 
-## 🎯 Crash Messages
+Open Power BI and add the Developer Visual to a report page. Click the visual to give it keyboard focus, then use the controls above.
 
-Hit something? You'll get fun data-themed crash messages:
+## Note on Large Files
 
-- 🌬️ **Windmill**: "Your query got caught in an infinite loop"
-- 🗼 **Tower**: "Connection to control tower lost"
-- 🏢 **Building**: "Your data warehouse has collapsed"
-- 🏚️ **Hangar**: "Storage allocation failed"
-- 🏠 **House**: "Local database corrupted"
-- 🌲 **Tree**: "Branching error detected"
-- 💥 **Ground**: "Your data pipeline has been terminated"
-
-## 🛠️ Development
-
-### Running the linter
-```bash
-npm run lint
-```
-
-### Hot reload
-The development server supports hot reload - changes to `visual.ts` will automatically refresh in Power BI Desktop.
-
-## 📝 License
-
-MIT License - feel free to use, modify, and share!
-
-## 🙏 Credits
-
-Built with ❤️ for keynote presentations. Features a Dutch countryside theme with windmills in honor of presentations in the Netherlands! 🇳🇱
-
----
-
-**Tip**: Click on the visual in Power BI to give it focus, then use the keyboard controls to fly! Press R to restart after a crash.
+The ground texture data (`assets/ground-map.png` and `src/ground-map-data.ts`) totals around 70 MB and is excluded from the git repository. The visual will still build and run -- it falls back to generated terrain when the texture files are absent.

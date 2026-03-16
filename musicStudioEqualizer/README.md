@@ -1,203 +1,75 @@
-# 🎵 Power BI Music Player
+# Music Studio Equalizer
 
-An advanced custom visual for Power BI that transforms your workspace into a professional music studio with real-time audio visualization.
+A music player with eight real-time audio visualisation styles, five visual themes, playlist management, audio effects, and a DJ mashup mode with dual-track playback and crossfader.
 
-![Power BI Next Step Music Centre](assets/icon.png)
+## What It Does
 
-## ✨ Features
+Point this visual at audio file URLs in your data model and it becomes a fully functional music player with a visual equalizer. It analyses the audio in real time using the Web Audio API and renders one of eight visualisation styles that react to the frequencies, beat, and energy of the music.
 
-### 🎼 Professional Music Player
-- **Multi-track playlist** with shuffle/repeat functionality
-- **Advanced audio processing** with bass, treble, and reverb controls
-- **Real-time beat detection** with visual feedback
-- **Progress tracking** with seek functionality
-- **Keyboard shortcuts** for full control
+There is also a DJ mashup mode with two decks and a crossfader, if you feel like mixing tracks during a dashboard review.
 
-### 🌈 Visual Themes
-- **5 Professional Themes**: Neon, Cyberpunk, Retro 80s, Nature, Fire
-- **Dynamic theme transitions** based on music mood and energy
-- **Audio-reactive backgrounds** with breathing effects
-- **Customizable color palettes** for each visualization
+## Data Roles
 
-### 📊 Visualization Styles
-- **📊 Frequency Bars** - Classic equalizer bars
-- **⭕ Circular** - Radial frequency display
-- **〰️ Waveform** - Real-time waveform visualization
-- **🌈 Spectrum** - Full spectrum analysis
-- **🌌 Galaxy Spiral** - Cosmic visualization effects
-- **💚 Matrix Rain** - Digital matrix-style display
-- **📊 VU Meters** - Professional VU meter display
-- **🌊 Liquid Wave** - Fluid wave animations
+| Field      | Type     | Description                               |
+| ---------- | -------- | ----------------------------------------- |
+| Music URLs | Grouping | URLs to audio files (MP3, WAV, OGG, etc.) |
+| Track Names| Grouping | Display names for each track               |
+| Audio Data | Measure  | Numeric data for data-driven features      |
+| Categories | Grouping | Grouping for track categorisation          |
 
-### 🚀 Advanced Effects System
-- **Beat Detection** with screen flash synchronization
-- **Audio Waterfall** - Cascading frequency visualization
-- **Smart Particle Explosions** - Beat-triggered particle effects
-- **Interactive Elements** - Mouse/touch responsive effects
-- **Music Analysis** - BPM detection, tempo, mood, and energy analysis
-- **Background Effects** - Audio-reactive gradients and patterns
+## Visualisation Styles
 
-## 🛠️ Installation
+1. **Frequency Bars** -- classic equalizer bars
+2. **Circular** -- radial frequency display
+3. **Waveform** -- real-time waveform trace
+4. **Spectrum** -- full spectrum analyser
+5. **Galaxy Spiral** -- cosmic particle visualisation
+6. **Matrix Rain** -- characters cascading in time with the music
+7. **VU Meters** -- professional level meter display
+8. **Liquid Wave** -- fluid wave animation
 
-### Prerequisites
-- Power BI Desktop (latest version)
-- Node.js (version 18 or higher)
-- PowerBI-Visuals-Tools CLI
+## Themes
 
-### Setup
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/dax-tips/powerbi-music-player.git
-   cd powerbi-music-player
-   ```
+Five built-in themes: Neon, Cyberpunk, Retro 80s, Nature, and Fire. Themes change the colour palette, glow effects, and background gradients. The visual can also auto-switch themes based on the energy and mood of the music.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Controls
 
-3. Build the visual:
-   ```bash
-   npm run package
-   ```
+| Key       | Action                  |
+| --------- | ----------------------- |
+| Space     | Play / Pause            |
+| Left / Right | Seek forward / back  |
+| Up / Down | Volume up / down        |
+| F         | Toggle fullscreen       |
+| 1-8       | Switch visualisation    |
+| T         | Cycle themes            |
+| P         | Toggle particles        |
+| S         | Toggle shuffle          |
+| R         | Toggle repeat           |
+| N / B     | Next / previous track   |
+| H         | Toggle help overlay     |
 
-4. Import the `.pbiviz` file into Power BI Desktop
+## Features
 
-## 🎮 Usage
+- Multi-track playlist with shuffle and repeat
+- Bass and treble filters (plus/minus 12 dB)
+- Reverb and compressor effects
+- Real-time beat detection with BPM calculation
+- Beat-triggered particle explosions and screen flash
+- Advanced particle system with physics, gravity, magnetic fields, and mouse attraction
+- Music analysis: tempo, energy, and mood detection
+- Mouse-responsive visualisations with click ripple effects
+- Album art display and track metadata
 
-### Basic Controls
-- **Play/Pause**: Space bar or click the play button
-- **Volume**: Mouse wheel or volume slider
-- **Skip**: Arrow keys (←→) or skip buttons
-- **Themes**: Dropdown selector or 'T' key
-- **Visualizations**: Style dropdown or number keys (1-8)
+## Audio Format Support
 
-### Keyboard Shortcuts
-| Key | Action |
-|-----|--------|
-| `SPACE` | Play/Pause |
-| `←` / `→` | Skip 10 seconds |
-| `↑` / `↓` | Volume control |
-| `F` | Toggle fullscreen |
-| `1-8` | Switch visualizations |
-| `T` | Cycle themes |
-| `P` | Toggle particles |
-| `S` | Toggle shuffle |
-| `R` | Toggle repeat |
-| `N` / `B` | Next/Previous track |
-| `H` | Toggle help |
-| `ESC` | Exit fullscreen |
+MP3, WAV, OGG, M4A, FLAC -- anything the browser's Web Audio API can decode.
 
-### Advanced Features
-- **Beat Detection**: Automatically detects beats and triggers visual effects
-- **Music Analysis**: Real-time BPM, tempo, energy, and mood detection
-- **Interactive Mode**: Click and drag for ripple effects
-- **Particle System**: Audio-reactive particle explosions
-- **Theme Transitions**: Automatic theme changes based on music energy
-
-## 📁 Project Structure
+## How to Run
 
 ```
-powerbi-music-player/
-├── src/
-│   ├── visual.ts          # Main visual implementation
-│   └── settings.ts        # Power BI settings configuration
-├── style/
-│   └── visual.less        # Styling and themes
-├── assets/
-│   └── icon.png          # Visual icon
-├── capabilities.json      # Power BI capabilities definition
-├── pbiviz.json           # Visual metadata
-├── package.json          # Dependencies and scripts
-└── tsconfig.json         # TypeScript configuration
+cd musicStudioEqualizer
+npm install
+pbiviz start
 ```
 
-## 🎨 Customization
-
-### Adding New Themes
-1. Open `src/visual.ts`
-2. Find the `initializeThemes()` method
-3. Add your new theme following the existing pattern:
-
-```typescript
-this.themes.set('custom', {
-    name: 'Custom Theme',
-    colors: {
-        primary: '#your-primary-color',
-        secondary: '#your-secondary-color',
-        accent: '#your-accent-color',
-        background: 'linear-gradient(45deg, #color1, #color2)',
-        text: '#ffffff',
-        glow: '#your-glow-color'
-    },
-    particleColors: ['#color1', '#color2', '#color3']
-});
-```
-
-### Adding New Visualizations
-1. Create a new visualization method in `src/visual.ts`
-2. Add it to the visualization switch in `drawVisualization()`
-3. Update the style dropdown in `initializeMusicStudio()`
-
-## 🚀 Development
-
-### Build Commands
-- `npm run start` - Start development server
-- `npm run package` - Build production package
-- `npm run lint` - Run ESLint
-
-### Development Server
-The development server runs on `https://localhost:8080/` with hot reload enabled.
-
-## 📋 Requirements
-- **Audio Files**: Supports MP3, WAV, OGG, M4A, FLAC
-- **Browser**: Modern browser with Web Audio API support
-- **Power BI**: Power BI Desktop or Power BI Service
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add new feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🎯 Roadmap
-
-### Planned Features
-- [ ] Spotify/Apple Music integration
-- [ ] Cloud playlist synchronization
-- [ ] Advanced DSP effects (EQ, compressor, limiter)
-- [ ] Custom visualization scripting
-- [ ] Export visualizations as video
-- [ ] MIDI controller support
-- [ ] Real-time collaboration features
-
-## 🐛 Known Issues
-- Large audio files may cause memory usage spikes
-- Some visualization effects may reduce performance on older hardware
-- Beat detection accuracy varies with music genre
-
-## 📞 Support
-
-For questions, bug reports, or feature requests:
-- Create an issue in this repository
-- Contact the DAX Tips team
-- Check the [Power BI Community](https://community.powerbi.com/)
-
-## 🎵 Acknowledgments
-
-- Built with the Power BI Visuals SDK
-- Uses Web Audio API for real-time analysis
-- Inspired by professional music production software
-- Special thanks to the Power BI developer community
-
----
-
-**Made with ❤️ by the DAX Tips Team**
-
-*Transform your Power BI dashboards into an immersive music experience!*
+Open Power BI and add the Developer Visual to a report page. Provide audio file URLs through the Music URLs data role, or use the built-in demo tracks to test.
