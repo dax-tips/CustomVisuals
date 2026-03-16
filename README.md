@@ -112,17 +112,46 @@ Note: this setting resets each session. You need to enable it again each time yo
 
 Once enabled, a new visual called "Developer Visual" (with a tools icon) appears in the Visualisations pane. This visual connects to the local development server started by `pbiviz start`.
 
-## Creating a New Custom Visual from Scratch
+---
 
-To create a brand new visual project:
+## Building Your Own Visual
+
+This is the fun part. Once Node.js and pbiviz are installed, you can create a custom visual entirely by describing what you want in plain English.
+
+### 1. Create and start a new visual project
 
 ```
 pbiviz new MyVisualName
 cd MyVisualName
+npm install
 pbiviz start
 ```
 
-This creates a project folder with the standard structure, installs dependencies, and starts the development server. Open Power BI, add the Developer Visual to your report, and you'll see your visual running live with hot-reload as you edit the code.
+This starts a local development server. Open **Power BI Service** (app.powerbi.com), add the **Developer Visual** to a report page, and you will see your visual rendering live. Every time you save a code change, the visual refreshes automatically.
+
+### 2. Describe what you want to an LLM
+
+Open VS Code, start a chat with GitHub Copilot (or your preferred LLM), and make sure it is running in **Agent mode**. Then just describe what you want your visual to do — in natural language. For example:
+
+> "Create a bar chart that shows sales by region with gradient colours and tooltips showing the exact value."
+
+> "Build a traffic light indicator that turns green when the KPI value exceeds the target, amber when it's within 10%, and red otherwise."
+
+> "Make a retro arcade game that runs inside Power BI."
+
+You don't need to know TypeScript, D3, or the Power BI visuals API to get started. The LLM handles the code — you describe the outcome. Use your microphone (speech-to-text) if you prefer talking over typing.
+
+Keep the `pbiviz start` server running while you iterate. Each time the LLM edits your code and saves, the visual updates in Power BI within seconds. This tight feedback loop is what makes the process so productive — you can see every change immediately.
+
+### 3. Keep going
+
+Ask for changes, add features, fix things that don't look right. The conversation is cumulative — the LLM remembers what it has already built and can refine it step by step. Every visual in this repo was built this way.
+
+### Pro tip: check your code into GitHub
+
+Create a free GitHub repository for your visual and commit your code regularly. This gives you a safety net — if something breaks, you can revert to a previous version. GitHub Copilot can help you set up the repo and walk you through the git commands if you haven't done it before.
+
+---
 
 ## Working with Visuals from This Repo
 
