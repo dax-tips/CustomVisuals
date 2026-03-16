@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/qRCode12863CE57FDB4DCD85138DC6015A6A85.pbiviz.json"
+			}
+		],
+		"visual": {"name":"qrCodeGenerator","displayName":"QR Code Generator","guid":"qRCode12863CE57FDB4DCD85138DC6015A6A85","visualClassName":"Visual","version":"1.0.0.0","description":"A QR code generator with error correction levels, custom centre icons, rounded corners, card styling, and responsive sizing","supportUrl":"https://dax.tips","gitHubUrl":"https://github.com/dax-tips/CustomVisuals"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

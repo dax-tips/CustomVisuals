@@ -1,0 +1,109 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Music URLs",
+            "name": "musicUrls",
+            "kind": "Grouping",
+            "description": "URLs or file paths to music files"
+        },
+        {
+            "displayName": "Track Names",
+            "name": "trackNames", 
+            "kind": "Grouping",
+            "description": "Names or titles of the music tracks"
+        },
+        {
+            "displayName": "Audio Data",
+            "name": "audioData",
+            "kind": "Measure",
+            "description": "Numeric audio data for visualization (optional)"
+        },
+        {
+            "displayName": "Categories",
+            "name": "categories",
+            "kind": "Grouping", 
+            "description": "Categories or genres for music organization (optional)"
+        }
+    ],
+    "dataViewMappings": [
+        {
+            "conditions": [
+                {
+                    "musicUrls": {
+                        "max": 1
+                    },
+                    "trackNames": {
+                        "max": 1
+                    },
+                    "audioData": {
+                        "max": 10
+                    },
+                    "categories": {
+                        "max": 5
+                    }
+                }
+            ],
+            "categorical": {
+                "categories": {
+                    "for": {
+                        "in": "musicUrls"
+                    }
+                },
+                "values": {
+                    "group": {
+                        "by": "trackNames",
+                        "select": [
+                            {
+                                "for": {
+                                    "in": "audioData"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "objects": {
+        "dataPoint": {
+            "properties": {
+                "defaultColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fill": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fillRule": {
+                    "type": {
+                        "fill": {}
+                    }
+                },
+                 "fontSize": {
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "privileges": []
+}

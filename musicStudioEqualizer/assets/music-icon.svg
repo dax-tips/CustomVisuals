@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions for glow effects -->
+    <radialGradient id="neonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#00ccff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff0080;stop-opacity:0.3" />
+    </radialGradient>
+    
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff0080;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00ff88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ccff;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark background with subtle gradient -->
+  <rect width="128" height="128" rx="16" ry="16" fill="url(#neonGlow)" opacity="0.1"/>
+  <rect width="128" height="128" rx="16" ry="16" fill="#0a0a0a" stroke="#00ff88" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Equalizer bars - representing the music visualizer -->
+  <g transform="translate(20, 30)" filter="url(#glow)">
+    <!-- Bar 1 -->
+    <rect x="0" y="30" width="8" height="38" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="38;20;45;25;38" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="30;48;23;43;30" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bar 2 -->
+    <rect x="12" y="15" width="8" height="53" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="53;35;60;28;53" dur="1s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="15;33;8;40;15" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bar 3 -->
+    <rect x="24" y="8" width="8" height="60" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="60;45;65;30;60" dur="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="8;23;3;38;8" dur="0.8s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bar 4 -->
+    <rect x="36" y="20" width="8" height="48" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="48;25;55;32;48" dur="1.1s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="20;43;13;36;20" dur="1.1s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bar 5 -->
+    <rect x="48" y="12" width="8" height="56" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="56;40;62;28;56" dur="0.9s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="12;28;6;40;12" dur="0.9s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bar 6 -->
+    <rect x="60" y="25" width="8" height="43" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="43;30;50;22;43" dur="1.3s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="25;38;18;46;25" dur="1.3s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bar 7 -->
+    <rect x="72" y="18" width="8" height="50" fill="url(#barGradient)" rx="4">
+      <animate attributeName="height" values="50;35;58;26;50" dur="1.0s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="18;33;10;42;18" dur="1.0s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Musical note symbol -->
+  <g transform="translate(75, 85)" filter="url(#glow)">
+    <!-- Note stem -->
+    <rect x="0" y="-45" width="3" height="35" fill="#00ff88" rx="1.5"/>
+    
+    <!-- Note head -->
+    <ellipse cx="1.5" cy="-10" rx="6" ry="4" fill="#00ff88"/>
+    
+    <!-- Musical staff lines (simplified) -->
+    <line x1="-15" y1="-5" x2="25" y2="-5" stroke="#00ccff" stroke-width="1" opacity="0.6"/>
+    <line x1="-15" y1="0" x2="25" y2="0" stroke="#00ccff" stroke-width="1" opacity="0.6"/>
+    <line x1="-15" y1="5" x2="25" y2="5" stroke="#00ccff" stroke-width="1" opacity="0.6"/>
+  </g>
+  
+  <!-- Decorative sound waves -->
+  <g transform="translate(10, 95)" opacity="0.7">
+    <path d="M0,0 Q5,-3 10,0 Q15,3 20,0" stroke="#ff0080" stroke-width="2" fill="none">
+      <animate attributeName="d" values="M0,0 Q5,-3 10,0 Q15,3 20,0;M0,0 Q5,3 10,0 Q15,-3 20,0;M0,0 Q5,-3 10,0 Q15,3 20,0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0,5 Q5,-2 10,5 Q15,8 20,5" stroke="#00ff88" stroke-width="2" fill="none">
+      <animate attributeName="d" values="M0,5 Q5,-2 10,5 Q15,8 20,5;M0,5 Q5,8 10,5 Q15,-2 20,5;M0,5 Q5,-2 10,5 Q15,8 20,5" dur="1.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Corner accent -->
+  <circle cx="110" cy="18" r="3" fill="#ff0080" filter="url(#glow)">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+</svg>

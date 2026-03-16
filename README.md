@@ -29,9 +29,21 @@ The source code for every visual is included. You are welcome to download, modif
 | **[matrixAndMaze](matrixAndMaze/)**               | A maze game where you navigate office politics to find four Power BI treasures before I.T. Admin shuts you down.                                                                                                           |
 | **[abelTasmanVoyage](abelTasmanVoyage/)**         | An animated visualisation of Abel Tasman's 1642 voyage from Jakarta to New Zealand, with a 2D old-world map view and a rotating 3D globe view showing a modern return flight to the Netherlands.                           |
 
+## Quick Start — Just Want to Try a Visual?
+
+Each visual has a ready-to-use `.pbiviz` file in its `dist/` folder. No development setup required.
+
+1. Browse to the visual's `dist/` folder in this repo and download the `.pbiviz` file.
+2. In **Power BI Desktop**, go to **Visualisations** pane → **…** → **Import a visual from a file** and select the downloaded file.
+3. In **Power BI Service**, open your report in edit mode → **Visualisations** pane → **…** → **Import a visual from a file**.
+
+The visual will appear in your Visualisations pane ready to use.
+
+---
+
 ## Setting Up Your Machine
 
-These instructions are for Windows. You only need to do this once.
+These instructions are for Windows and are only needed if you want to modify or build the visuals yourself. You only need to do this once.
 
 Full details are on the official Microsoft documentation page: [Set up your environment for developing a Power BI visual](https://learn.microsoft.com/en-us/power-bi/developer/visuals/environment-setup).
 

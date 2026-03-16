@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/powerbimusicplayer.pbiviz.json"
+			}
+		],
+		"visual": {"name":"Power BI Music Player","displayName":"Power BI Music Player","guid":"powerbimusicplayer","visualClassName":"Visual","version":"1.0.0.0","description":"Professional music player with real-time audio visualization, beat detection, and advanced effects for Power BI","supportUrl":"https://dax.tips","gitHubUrl":"https://github.com/dax-tips/powerbi-music-player"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

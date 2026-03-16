@@ -1,0 +1,348 @@
+// Gaming Hub Styles
+.game-header {
+    background: linear-gradient(45deg, #1a1a1a, #333);
+    border-bottom: 2px solid #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.game-controls {
+    background: #333;
+    border-bottom: 1px solid #555;
+    
+    select {
+        background: #444;
+        color: #fff;
+        border: 2px solid #00ff00;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        
+        &:hover {
+            background: #555;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 10px #00ff00;
+        }
+    }
+}
+
+.game-area {
+    background: #000;
+    overflow: hidden;
+    
+    canvas {
+        border: 2px solid #00ff00;
+        background: #001122;
+    }
+}
+
+// Pulse animation for dots game
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+// Retro glow effect
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #00ff00;
+    }
+    50% {
+        text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+    100% {
+        text-shadow: 0 0 5px #00ff00;
+    }
+}
+
+// Button styles
+button {
+    background: #00ff00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: #00cc00;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Score display styling
+.score-display {
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 0 5px #00ff00;
+    animation: glow 2s infinite alternate;
+}
+
+// Game over modal
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: #ff0000;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #ff0000;
+    z-index: 1000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    
+    h2 {
+        margin: 0 0 15px 0;
+        font-size: 28px;
+        text-shadow: 0 0 10px #ff0000;
+    }
+    
+    p {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+}
+
+// Boss mode styles
+.boss-content {
+    background: white;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    h1 {
+        color: #2c3e50;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    h3 {
+        color: #34495e;
+        margin-bottom: 15px;
+    }
+    
+    .chart-placeholder {
+        background: #ecf0f1;
+        border: 1px dashed #bdc3c7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #7f8c8d;
+        font-size: 18px;
+    }
+}
+
+// Minesweeper specific styles
+.mine-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px outset #c0c0c0;
+    background: #c0c0c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    font-family: 'Courier New', monospace;
+    
+    &:hover {
+        background: #d0d0d0;
+    }
+    
+    &:active {
+        border: 1px inset #c0c0c0;
+    }
+}
+
+#mineGrid {
+    display: inline-block;
+    border: 3px inset #c0c0c0;
+    background: #c0c0c0;
+    padding: 5px;
+}
+
+#mineCounter, #mineTimer {
+    background: #000;
+    color: #ff0000;
+    padding: 5px 10px;
+    border: 2px inset #c0c0c0;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+}
+
+.minesweeper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #c0c0c0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px inset #c0c0c0;
+    font-family: 'Courier New', monospace;
+    
+    button {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        border: 2px outset #c0c0c0;
+        background: #c0c0c0;
+        cursor: pointer;
+        padding: 0;
+        
+        &:hover {
+            background: #d0d0d0;
+        }
+        
+        &:active {
+            border: 2px inset #c0c0c0;
+        }
+    }
+}
+
+// Marble Run Builder styles
+.marble-run-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    
+    .piece-selector {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        
+        span {
+            font-weight: bold;
+            color: #333;
+            margin-right: 10px;
+        }
+        
+        button {
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+            border: 2px solid #333;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            
+            &:hover {
+                background: #f0f0f0;
+                transform: scale(1.05);
+            }
+            
+            &.selected {
+                background: #ffeb3b;
+                transform: scale(1.1);
+                box-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
+            }
+        }
+    }
+    
+    .controls {
+        display: flex;
+        gap: 10px;
+        
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            
+            &.release-btn {
+                background: #4CAF50;
+                color: white;
+                
+                &:hover {
+                    background: #45a049;
+                    transform: translateY(-1px);
+                }
+            }
+            
+            &.clear-btn {
+                background: #f44336;
+                color: white;
+                
+                &:hover {
+                    background: #da190b;
+                    transform: translateY(-1px);
+                }
+            }
+        }
+    }
+}
+
+.marble-run-canvas {
+    border: 3px solid #333;
+    background: #f0f8ff;
+    cursor: crosshair;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    
+    &:hover {
+        box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+    }
+}
+
+// Track piece animations
+@keyframes marble-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes track-place {
+    0% { transform: scale(0) rotate(180deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+// Marble trail effect
+.marble-trail {
+    opacity: 0.6;
+    filter: blur(1px);
+}
+
+// Legacy support for original styles
+p {
+    font-size: 20px;
+    font-weight: bold;
+    em {
+        background: yellow;
+        padding: 5px;
+    }
+}

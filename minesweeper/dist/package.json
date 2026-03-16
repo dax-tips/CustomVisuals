@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/minesweeperVisual19AF649229AF457C803344176B7E4B78.pbiviz.json"
+			}
+		],
+		"visual": {"name":"minesweeperVisual","displayName":"Minesweeper Game","guid":"minesweeperVisual19AF649229AF457C803344176B7E4B78","visualClassName":"Visual","version":"1.0.0.0","description":"A fully functional Minesweeper game with customizable difficulty levels, timer, and visual themes","supportUrl":"https://dax.tips","gitHubUrl":""},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

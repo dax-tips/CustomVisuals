@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/miguelColumnChartFFB9B0DC3E704E75B659816DF185C061.pbiviz.json"
+			}
+		],
+		"visual": {"name":"miguelColumnChart","displayName":"Multi-Facet Column Chart","guid":"miguelColumnChartFFB9B0DC3E704E75B659816DF185C061","visualClassName":"Visual","version":"1.0.0.0","description":"Multi-faceted column chart","supportUrl":"https://dax.tips","gitHubUrl":""},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

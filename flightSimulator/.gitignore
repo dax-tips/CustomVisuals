@@ -2,11 +2,9 @@
 node_modules/
 
 # Build output
-dist/
 .tmp/
 
 # Power BI Visual package
-*.pbiviz
 
 # IDE
 .vscode/

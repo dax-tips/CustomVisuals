@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/seriousVisualF77768B126C1493AB36629EC1499F617.pbiviz.json"
+			}
+		],
+		"visual": {"name":"seriousVisual","displayName":"KPI Achievement Card","guid":"seriousVisualF77768B126C1493AB36629EC1499F617","visualClassName":"Visual","version":"1.0.0.0","description":"A KPI achievement card with progress bar and threshold marker","supportUrl":"https://dax.tips","gitHubUrl":""},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

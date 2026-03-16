@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/pbigvizF82A15A4D10A45B5BB2496E64BCC3C1B.pbiviz.json"
+			}
+		],
+		"visual": {"name":"pbigviz","displayName":"Retro Arcade","guid":"pbigvizF82A15A4D10A45B5BB2496E64BCC3C1B","visualClassName":"Visual","version":"1.0.0.0","description":"A fun modular game arcade for Power BI","supportUrl":"https://dax.tips","gitHubUrl":"https://github.com/dax-tips/CustomVisuals"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

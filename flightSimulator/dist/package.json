@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/pbivizflightsim.pbiviz.json"
+			}
+		],
+		"visual": {"name":"PBIG Flight Simulator","displayName":"Flight Simulator","guid":"pbivizflightsim","visualClassName":"Visual","version":"1.0.0.0","description":"An interactive flight simulator custom visual for Power BI. Features cockpit view, 5 instruments, realistic physics, Dutch countryside scenery with windmills, airports, collision detection, and fun crash messages!","supportUrl":"https://dax.tips","gitHubUrl":"https://github.com/dax-tips/pbivizflightsim"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

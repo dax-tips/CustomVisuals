@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/Matrix_and_Maze.pbiviz.json"
+			}
+		],
+		"visual": {"name":"Matrix_and_Maze","displayName":"Matrix and Maze","guid":"Matrix_and_Maze","visualClassName":"Visual","version":"1.0.0.0","description":"Navigate the maze of work politics to find the four Power BI treasures before I.T. Admin finds you and shuts you down.","supportUrl":"https://dax.tips","gitHubUrl":""},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

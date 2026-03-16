@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/pieChart11E0DECAB4AC404EAD0CC7F66982CE02.pbiviz.json"
+			}
+		],
+		"visual": {"name":"pieChart","displayName":"Pie Chart","guid":"pieChart11E0DECAB4AC404EAD0CC7F66982CE02","visualClassName":"Visual","version":"1.0.0.0","description":"A D3 pie chart with cross-filtering support, tooltips, and click selection for Power BI reports","supportUrl":"https://dax.tips","gitHubUrl":"https://github.com/dax-tips/CustomVisuals"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/patrick2EAC9121D1EA4887B4040B8031887B66.pbiviz.json"
+			}
+		],
+		"visual": {"name":"patrick","displayName":"Game Arcade Six Pack","guid":"patrick2EAC9121D1EA4887B4040B8031887B66","visualClassName":"Visual","version":"1.0.0.0","description":"Six mini-games for Power BI: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper","supportUrl":"https://dax.tips","gitHubUrl":""},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

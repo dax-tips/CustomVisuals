@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Phil Seamark","email":"phil@dax.tips"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/kerry1B7DB482DD5B74038BA4673084B906DB0.pbiviz.json"
+			}
+		],
+		"visual": {"name":"scatterPlotSmallMultiples","displayName":"Scatter Plot Small Multiples","guid":"kerry1B7DB482DD5B74038BA4673084B906DB0","visualClassName":"Visual","version":"1.0.0.0","description":"A scatter plot chart with a small multiples layout, displaying multiple scatter plots in a grid for comparing categories side by side","supportUrl":"https://dax.tips","gitHubUrl":"https://github.com/dax-tips/CustomVisuals"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}
