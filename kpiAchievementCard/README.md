@@ -2,6 +2,8 @@
 
 A KPI card visual showing actual vs target values with progress bars, threshold markers, and achievement badges. Supports display unit formatting and customisable grid layouts.
 
+![KPI Achievement Card](screenshot.jpg)
+
 ## What It Does
 
 Each row in your data becomes a card. Each card shows the actual value, a progress bar comparing it against the target, and a badge indicating whether the target was achieved. Multiple cards are arranged in a configurable grid.

@@ -8,30 +8,32 @@ The source code for every visual is included. You are welcome to download, modif
 
 ### Data Visuals
 
-| Visual                                                         | Description                                                                                                                                                                           |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[histogram](histogram/)**                                 | A D3-based histogram that bins numeric values into configurable buckets and displays frequency distribution with gradient colouring.                                                  |
-| **[pieChart](pieChart/)**                                   | A D3 pie chart with cross-filtering support, tooltips, and click selection for use in Power BI reports.                                                                               |
-| **[scatterPlotSmallMultiples](scatterPlotSmallMultiples/)** | A scatter plot chart with a small multiples layout, displaying multiple scatter plots in a grid for comparing categories side by side.                                                |
-| **[kpiAchievementCard](kpiAchievementCard/)**               | A KPI achievement card showing actual vs target values with progress bars, threshold markers, and achievement badges. Supports display unit formatting and customisable grid layouts. |
-| **[multiFacetColumnChart](multiFacetColumnChart/)**         | A multi-faceted column chart for comparing measures across categories.                                                                                                                |
-| **[qrCodeGenerator](qrCodeGenerator/)**                     | A QR code generator with error correction levels, custom centre icons, rounded corners, card styling, and responsive sizing.                                                          |
+| Visual | Screenshot | Description |
+| ------ | ---------- | ----------- |
+| **[histogram](histogram/)** | ![histogram](histogram/screenshot.jpg) | A D3-based histogram that bins numeric values into configurable buckets and displays frequency distribution with gradient colouring. |
+| **[pieChart](pieChart/)** | ![pieChart](pieChart/screenshot.jpg) | A D3 pie chart with cross-filtering support, tooltips, and click selection for use in Power BI reports. |
+| **[scatterPlotSmallMultiples](scatterPlotSmallMultiples/)** | ![scatterPlotSmallMultiples](scatterPlotSmallMultiples/screenshot.jpg) | A scatter plot chart with a small multiples layout, displaying multiple scatter plots in a grid for comparing categories side by side. |
+| **[kpiAchievementCard](kpiAchievementCard/)** | ![kpiAchievementCard](kpiAchievementCard/screenshot.jpg) | A KPI achievement card showing actual vs target values with progress bars, threshold markers, and achievement badges. Supports display unit formatting and customisable grid layouts. |
+| **[multiFacetColumnChart](multiFacetColumnChart/)** | ![multiFacetColumnChart](multiFacetColumnChart/screenshot.jpg) | A multi-faceted column chart for comparing measures across categories. |
+| **[qrCodeGenerator](qrCodeGenerator/)** | ![qrCodeGenerator](qrCodeGenerator/screenshot.jpg) | A QR code generator with error correction levels, custom centre icons, rounded corners, card styling, and responsive sizing. |
 
 ### Games and Interactive Visuals
 
-| Visual                                               | Description                                                                                                                                                                                                                |
-| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[flightSimulator](flightSimulator/)**           | A 3D flight simulator with a cockpit view, five working instruments, terrain generation, cloud rendering, collision detection, and engine audio synthesis. Features Dutch countryside scenery with windmills and airports. |
-| **[retroArcade](retroArcade/)**                   | Five retro-styled arcade games in one visual: Snake, Tetris, Space Shooter, Neon Drift, and Synth Labyrinth. Includes CRT scan line effects and a boss key that shows a fake spreadsheet.                                  |
-| **[musicStudioEqualizer](musicStudioEqualizer/)** | A music player with eight real-time audio visualisation styles, five visual themes, playlist management, audio effects, and a DJ mashup mode with dual-track playback and crossfader.                                      |
-| **[gameArcadeSixPack](gameArcadeSixPack/)**       | Six mini-games: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper.                                                                                                                   |
-| **[minesweeper](minesweeper/)**                   | Classic Minesweeper with customisable difficulty levels, a timer, and visual themes.                                                                                                                                       |
-| **[matrixAndMaze](matrixAndMaze/)**               | A maze game where you navigate office politics to find four Power BI treasures before I.T. Admin shuts you down.                                                                                                           |
-| **[abelTasmanVoyage](abelTasmanVoyage/)**         | An animated visualisation of Abel Tasman's 1642 voyage from Jakarta to New Zealand, with a 2D old-world map view and a rotating 3D globe view showing a modern return flight to the Netherlands.                           |
+| Visual | Screenshot | Description |
+| ------ | ---------- | ----------- |
+| **[flightSimulator](flightSimulator/)** | ![flightSimulator](flightSimulator/screenshot.jpg) | A 3D flight simulator with a cockpit view, five working instruments, terrain generation, collision detection, and engine audio synthesis. Features Dutch countryside scenery with windmills and airports. |
+| **[retroArcade](retroArcade/)** | ![retroArcade](retroArcade/screenshot.jpg) | Five retro-styled arcade games in one visual: Snake, Tetris, Space Shooter, Neon Drift, and Synth Labyrinth. Includes CRT scan line effects and a boss key that shows a fake spreadsheet. |
+| **[musicStudioEqualizer](musicStudioEqualizer/)** | ![musicStudioEqualizer](musicStudioEqualizer/screenshot.jpg) | A music player with eight real-time audio visualisation styles, five visual themes, playlist management, audio effects, and a DJ mashup mode with dual-track playback and crossfader. |
+| **[gameArcadeSixPack](gameArcadeSixPack/)** | ![gameArcadeSixPack](gameArcadeSixPack/screenshot.jpg) | Six mini-games: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper. |
+| **[minesweeper](minesweeper/)** | ![minesweeper](minesweeper/screenshot.jpg) | Classic Minesweeper with customisable difficulty levels, a timer, and visual themes. |
+| **[matrixAndMaze](matrixAndMaze/)** | ![matrixAndMaze](matrixAndMaze/screenshot.jpg) | A maze game where you navigate office politics to find four Power BI treasures before I.T. Admin shuts you down. |
+| **[abelTasmanVoyage](abelTasmanVoyage/)** | ![abelTasmanVoyage](abelTasmanVoyage/screenshot.jpg) | An animated visualisation of Abel Tasman's 1642 voyage from Jakarta to New Zealand, with a 2D old-world map view and a rotating 3D globe view showing a modern return flight to the Netherlands. |
 
 ## Quick Start — Just Want to Try a Visual?
 
-Each visual has a ready-to-use `.pbiviz` file in its `dist/` folder. No development setup required.
+The easiest way to get started is to download **[Sample.pbix](Sample.pbix)** -- a Power BI Desktop file with all 13 visuals loaded, each on its own page with sample data. Open it in Power BI Desktop and start exploring.
+
+Alternatively, each visual has a ready-to-use `.pbiviz` file in its `dist/` folder:
 
 1. Browse to the visual's `dist/` folder in this repo and download the `.pbiviz` file.
 2. In **Power BI Desktop**, go to **Visualisations** pane → **…** → **Import a visual from a file** and select the downloaded file.

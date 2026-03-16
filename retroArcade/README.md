@@ -2,6 +2,8 @@
 
 Five retro-styled arcade games in one Power BI custom visual: Snake, Tetris, Space Shooter, Neon Drift, and Synth Labyrinth. Includes CRT scan line effects and a boss key that shows a fake spreadsheet.
 
+![Retro Arcade](screenshot.jpg)
+
 ## What It Does
 
 A dropdown in the toolbar lets you select a game. Each game runs on a canvas with retro styling -- scan lines, glow effects, and pixel aesthetics. If someone walks past your desk, hit the boss key to instantly switch to a convincing fake spreadsheet view.

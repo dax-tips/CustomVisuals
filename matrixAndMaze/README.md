@@ -2,6 +2,8 @@
 
 Navigate the maze of office politics to find the four Power BI treasures before I.T. Admin catches you and shuts you down.
 
+![Matrix and Maze](screenshot.jpg)
+
 ## What It Does
 
 The visual has two modes:

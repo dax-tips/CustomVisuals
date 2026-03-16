@@ -2,6 +2,8 @@
 
 A D3-based column chart that splits data into facets, displaying a separate bar chart for each category in a grid layout.
 
+![Multi-Facet Column Chart](screenshot.jpg)
+
 ## What It Does
 
 The visual takes a category, a facet field, and a measure. It creates a small column chart for each distinct facet value and arranges them in a grid. This lets you compare the same measure across different slices of your data side by side.

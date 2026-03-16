@@ -2,6 +2,8 @@
 
 An animated visualisation of Abel Tasman's 1642 voyage from Jakarta to New Zealand, with a 2D old-world map view and a rotating 3D globe view showing a modern return flight to the Netherlands.
 
+![Abel Tasman Voyage](screenshot.jpg)
+
 ## What It Does
 
 The visual renders two views of the same journey:

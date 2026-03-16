@@ -2,6 +2,8 @@
 
 A music player with eight real-time audio visualisation styles, five visual themes, playlist management, audio effects, and a DJ mashup mode with dual-track playback and crossfader.
 
+![Music Studio Equalizer](screenshot.jpg)
+
 ## What It Does
 
 Point this visual at audio file URLs in your data model and it becomes a fully functional music player with a visual equalizer. It analyses the audio in real time using the Web Audio API and renders one of eight visualisation styles that react to the frequencies, beat, and energy of the music.

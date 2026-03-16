@@ -2,6 +2,8 @@
 
 A scatter plot chart with a small multiples layout, displaying multiple scatter plots in a grid for comparing categories side by side.
 
+![Scatter Plot Small Multiples](screenshot.jpg)
+
 ## What It Does
 
 The visual creates a separate scatter plot for each unique value in the Category field and arranges them in a grid. This makes it straightforward to compare patterns across different groups using the same X and Y scales.

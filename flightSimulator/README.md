@@ -2,6 +2,8 @@
 
 A 3D flight simulator built as a Power BI custom visual. Features a cockpit view, five working instruments, terrain generation, collision detection, and engine audio synthesis. The scenery is a Dutch countryside with windmills, buildings, and two airports.
 
+![Flight Simulator](screenshot.jpg)
+
 ## What It Does
 
 Drop this visual onto a Power BI report page, click it to focus, and fly. You get a first-person cockpit view with a horizon, ground terrain, sky, and scattered 3D objects. Five flight instruments on the cockpit panel respond in real time to your inputs.

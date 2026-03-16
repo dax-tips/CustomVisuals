@@ -2,6 +2,8 @@
 
 A fully functional Minesweeper game with customisable difficulty levels, a timer, and visual themes -- all running inside a Power BI custom visual.
 
+![Minesweeper](screenshot.jpg)
+
 ## What It Does
 
 Classic Minesweeper. Left-click to reveal a cell, right-click to flag it. Numbers tell you how many mines are adjacent. Reveal every safe cell to win. Hit a mine and it's over.

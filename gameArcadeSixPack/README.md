@@ -2,6 +2,8 @@
 
 Six mini-games packed into a single Power BI custom visual: Memory Match, Whack-A-Mole, Reaction Time, Tower Defense, City Builder, and Minesweeper.
 
+![Game Arcade Six Pack](screenshot.jpg)
+
 ## What It Does
 
 A dropdown in the toolbar lets you switch between six games. Each game runs on a canvas inside the visual and has its own controls, scoring, and state. Pick one, play it, switch to another -- they each manage their own lifecycle independently.

@@ -2,6 +2,8 @@
 
 A QR code generator with error correction levels, custom centre icons, rounded corners, card styling, and responsive sizing.
 
+![QR Code Generator](screenshot.jpg)
+
 ## What It Does
 
 The visual takes a text value from your data model and renders it as a QR code. You can scan the code with any phone camera to open a URL, display text, or trigger whatever action the encoded content supports. The visual wraps the QR code in an optional card with a title, subtitle, and centre icon.

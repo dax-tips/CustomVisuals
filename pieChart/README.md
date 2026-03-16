@@ -2,6 +2,8 @@
 
 A D3 pie chart with cross-filtering support, tooltips, and click selection for use in Power BI reports.
 
+![Pie Chart](screenshot.jpg)
+
 ## What It Does
 
 Drop a category and a measure onto the visual and it renders a standard pie chart. Click a slice to cross-filter other visuals on the report page. Hover over a slice to see its tooltip with the category name and value.

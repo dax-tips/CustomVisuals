@@ -2,6 +2,8 @@
 
 A D3-based histogram that bins numeric values into configurable buckets and displays frequency distribution with gradient colouring.
 
+![Histogram](screenshot.jpg)
+
 ## What It Does
 
 Drop a numeric field onto the visual and it groups the values into bins, drawing a bar for each bin showing how many values fall within that range. The number of bins is calculated automatically using the square-root rule, or you can configure up to 40 bins manually.
