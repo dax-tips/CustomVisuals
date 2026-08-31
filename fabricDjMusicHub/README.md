@@ -28,6 +28,8 @@ An advanced custom visual for Power BI that transforms your workspace into a pro
 - **💚 Matrix Rain** - Digital matrix-style display
 - **📊 VU Meters** - Professional VU meter display
 - **🌊 Liquid Wave** - Fluid wave animations
+- **🌀 Geiss Classic** - Source-informed full-width horizon feedback with audio-driven shifts, slow rotation, periodic single-line scenes, and inward-spiraling comets
+- **📊 Geiss + Bars** - Geiss feedback with transparent, glowing frequency bars layered across the lower portion of the scene
 
 ### 🚀 Advanced Effects System
 - **Beat Detection** with screen flash synchronization
@@ -70,7 +72,7 @@ An advanced custom visual for Power BI that transforms your workspace into a pro
 - **Volume**: Mouse wheel or volume slider
 - **Skip**: Arrow keys (←→) or skip buttons
 - **Themes**: Dropdown selector or 'T' key
-- **Visualizations**: Style dropdown or number keys (1-8)
+- **Visualizations**: Style dropdown, number keys, or bracket keys to cycle through every mode
 
 ### Keyboard Shortcuts
 | Key | Action |
@@ -80,6 +82,7 @@ An advanced custom visual for Power BI that transforms your workspace into a pro
 | `↑` / `↓` | Volume control |
 | `F` | Toggle fullscreen |
 | `1-8` | Switch visualizations |
+| `[` / `]` | Cycle through all visualizations, including Geiss |
 | `T` | Cycle themes |
 | `P` | Toggle particles |
 | `S` | Toggle shuffle |
@@ -194,6 +197,7 @@ For questions, bug reports, or feature requests:
 - Built with the Power BI Visuals SDK
 - Uses Web Audio API for real-time analysis
 - Inspired by professional music production software
+- Geiss Classic is an independent web-canvas interpretation informed by Ryan Geiss's [original Geiss source](https://github.com/geissomatik/geiss) and [algorithm overview](https://www.geisswerks.com/geiss/secrets.html); it does not embed or compile the original Windows code
 - Special thanks to the Power BI developer community
 
 ---

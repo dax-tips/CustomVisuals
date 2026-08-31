@@ -1,7 +1,7 @@
 {
   "name": "powerbi-music-player",
   "description": "Professional music player custom visual for Power BI with real-time audio visualization, beat detection, and advanced effects",
-  "version": "1.1.0",
+  "version": "1.1.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/dax-tips/powerbi-music-player.git"

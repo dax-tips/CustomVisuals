@@ -4,8 +4,8 @@
         "displayName": "Fabric DJ Music Hub",
         "guid": "fabricdjmusichub",
         "visualClassName": "Visual",
-        "version": "1.1.0.0",
-        "description": "Music player with 14 audio visualisation styles (including tape, vinyl, DNA, radar, oscilloscope), beat detection, DJ mashup mode, and keyboard shortcuts to cycle through visuals. Built for FabCon.",
+        "version": "1.1.9.0",
+        "description": "Music player with 17 audio visualisation styles, including Geiss Classic and Geiss + Bars feedback modes, plus tape, vinyl, DNA, radar, and oscilloscope. Built for FabCon.",
         "supportUrl": "https://dax.tips",
         "gitHubUrl": "https://github.com/dax-tips/CustomVisuals"
     },
