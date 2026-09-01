@@ -7,7 +7,7 @@
 *  - Real-time audio-reactive particle effects  
 *  - Advanced audio processing (bass, treble, reverb)
 *  - Beat detection with visual effects
-*  - 8 visualization styles (bars, circular, waveform, spectrum, galaxy, matrix, VU, liquid)
+*  - 17 visualization styles, including Geiss Classic and Geiss + Bars feedback
 *  - 5 visual themes (neon, cyberpunk, retro, nature, fire)
 *  - Music metadata extraction and album art display
 *  - Full keyboard controls and fullscreen mode
@@ -373,13 +373,19 @@ export class Visual implements IVisual {
     private particlesEnabled: boolean = true;
     private currentTheme: string = 'neon';
     private themes: Map<string, Theme> = new Map();
-    private visualizationStyle: string = 'bars';
+    private visualizationStyle: string = 'geiss';
+    private geissFeedbackCanvas: HTMLCanvasElement | null = null;
+    private geissScratchCanvas: HTMLCanvasElement | null = null;
+    private geissPhase: number = 0;
+    private geissNeedsReset: boolean = true;
+    private geissWarpMode: number = 0;
+    private geissWaveformMode: number = 2;
     
     // 🔄 Auto-Cycling Visualizations
     private autoCycleEnabled: boolean = false;
     private cycleInterval: number = 20000; // 20 seconds
     private cycleTimer: number | null = null;
-    private visualizationModes: string[] = ['bars', 'circular', 'waveform', 'spectrum', 'galaxy', 'matrix', 'vu', 'liquid', 'vinyl', 'spectrogram', 'dna', 'fireworks', 'oscilloscope', 'radar', 'cassette'];
+    private visualizationModes: string[] = ['bars', 'circular', 'waveform', 'spectrum', 'galaxy', 'matrix', 'vu', 'liquid', 'vinyl', 'spectrogram', 'dna', 'fireworks', 'oscilloscope', 'radar', 'cassette', 'geiss', 'geiss-bars'];
     private currentCycleIndex: number = 0;
     
     // 🆕 Advanced Physics System
@@ -762,6 +768,8 @@ export class Visual implements IVisual {
                                     <option value="oscilloscope">Scope</option>
                                     <option value="radar">Radar</option>
                                     <option value="cassette">Tape</option>
+                                    <option value="geiss" selected>Geiss Classic</option>
+                                    <option value="geiss-bars">Geiss + Bars</option>
                                     <option value="auto-cycle">Auto</option>
                                 </select>
                                 <button id="particlesToggle" class="ms-toolbar-btn ms-toolbar-btn--active">FX ON</button>
@@ -2085,6 +2093,9 @@ export class Visual implements IVisual {
     }
 
     private setVisualization(style: string): void {
+        if (style !== this.visualizationStyle) {
+            this.geissNeedsReset = true;
+        }
         this.visualizationStyle = style;
         const visualSelect = this.target.querySelector('#visualStyle') as HTMLSelectElement;
         if (visualSelect) {
@@ -2844,6 +2855,9 @@ export class Visual implements IVisual {
             this.startAutoCycle();
         } else {
             this.stopAutoCycle();
+            if (select.value !== this.visualizationStyle) {
+                this.geissNeedsReset = true;
+            }
             this.visualizationStyle = select.value;
         }
     }
@@ -4301,6 +4315,7 @@ export class Visual implements IVisual {
                 this.particleContext.resetTransform();
                 this.particleContext.scale(dpr, dpr);
             }
+            this.geissNeedsReset = true;
         }
     }
 
@@ -4340,6 +4355,7 @@ export class Visual implements IVisual {
     private visualizationLoop(): void {
         if (!this.canvasContext || !this.equalizerCanvas) return;
 
+        const isGeissMode = this.visualizationStyle === 'geiss' || this.visualizationStyle === 'geiss-bars';
         this.clearCanvas();
         this.clearWebGLCanvas(); // NEW: Clear 3D canvas
         
@@ -4356,13 +4372,21 @@ export class Visual implements IVisual {
                 this.generateMusicFromVisualizationData();
             }
             
-            this.updateParticles();
+            if (!isGeissMode) {
+                this.updateParticles();
+            }
             this.drawVisualization(); // This now includes all the new awesome features
-            this.render3DVisualization(); // NEW: WebGL 3D rendering
+            if (!isGeissMode) {
+                this.render3DVisualization(); // NEW: WebGL 3D rendering
+            }
             this.updateVUMeters();
         }
 
-        this.drawParticles();
+        if (isGeissMode) {
+            this.clearParticleCanvas();
+        } else {
+            this.drawParticles();
+        }
         this.animationId = requestAnimationFrame(() => this.visualizationLoop());
     }
 
@@ -5198,6 +5222,20 @@ export class Visual implements IVisual {
     }
 
     private drawVisualization(): void {
+        if (this.visualizationStyle === 'geiss') {
+            this.drawGeissFeedback();
+            return;
+        }
+        if (this.visualizationStyle === 'geiss-bars') {
+            this.drawGeissFeedback();
+            this.drawFrequencyBars(true);
+            return;
+        }
+
+        if (this.visualizationStyle !== 'geiss' && this.visualizationStyle !== 'geiss-bars') {
+            this.geissNeedsReset = true;
+        }
+
         switch (this.visualizationStyle) {
             case 'bars':
                 this.drawFrequencyBars();
@@ -5270,7 +5308,7 @@ export class Visual implements IVisual {
         this.drawBackgroundEffects();
     }
 
-    private drawFrequencyBars(): void {
+    private drawFrequencyBars(overlay: boolean = false): void {
         if (!this.canvasContext || !this.frequencyData || !this.equalizerCanvas) return;
 
         // Get canvas dimensions
@@ -5278,9 +5316,11 @@ export class Visual implements IVisual {
         const width = rect.width;
         const height = rect.height;
         
-        // Clear canvas with subtle dark background
-        this.canvasContext.fillStyle = 'rgba(0, 0, 0, 0.2)';
-        this.canvasContext.fillRect(0, 0, width, height);
+        if (!overlay) {
+            // Clear canvas with subtle dark background
+            this.canvasContext.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            this.canvasContext.fillRect(0, 0, width, height);
+        }
         
         // Enhanced bar visualization
         const numBars = 32;
@@ -5307,7 +5347,7 @@ export class Visual implements IVisual {
             const amplitude = Math.min(1, boostedAmplitude * 0.7); // Cap at 70% to prevent overflow
             
             // Calculate bar height with better scaling
-            const barHeight = Math.max(3, amplitude * height * 0.8); // Use 80% of available height
+            const barHeight = Math.max(3, amplitude * height * (overlay ? 0.42 : 0.8));
             
             // Bar position
             const x = i * barWidth + barGap / 2;
@@ -5328,6 +5368,8 @@ export class Visual implements IVisual {
             gradient.addColorStop(1, brightColor);
             
             // Draw main bar with gradient
+            this.canvasContext.save();
+            this.canvasContext.globalAlpha = overlay ? 0.78 : 1;
             this.canvasContext.fillStyle = gradient;
             this.canvasContext.fillRect(x, y, barWidth - barGap, barHeight);
             
@@ -5342,6 +5384,7 @@ export class Visual implements IVisual {
             // Add subtle white highlight on top
             this.canvasContext.fillStyle = `rgba(255, 255, 255, ${amplitude * 0.3})`;
             this.canvasContext.fillRect(x, y, barWidth - barGap, Math.max(1, barHeight * 0.1));
+            this.canvasContext.restore();
         }
     }
 
@@ -5752,6 +5795,296 @@ export class Visual implements IVisual {
     }
 
     // ── NEW VISUALIZATION MODES ──────────────────────────────────
+
+    /**
+     * Audio waveform + image warp feedback, following the two-stage process
+     * documented by Ryan Geiss for the original Geiss visualizer.
+     */
+    private drawGeissFeedback(): void {
+        if (!this.canvasContext || !this.frequencyData || !this.timeData || !this.equalizerCanvas) return;
+
+        const dpr = window.devicePixelRatio || 1;
+        const width = this.equalizerCanvas.width / dpr;
+        const height = this.equalizerCanvas.height / dpr;
+        const renderScale = Math.min(1, 960 / Math.max(1, width), 540 / Math.max(1, height));
+        const pixelWidth = Math.max(1, Math.floor(width * renderScale));
+        const pixelHeight = Math.max(1, Math.floor(height * renderScale));
+
+        if (!this.geissFeedbackCanvas) {
+            this.geissFeedbackCanvas = document.createElement('canvas');
+        }
+        if (!this.geissScratchCanvas) {
+            this.geissScratchCanvas = document.createElement('canvas');
+        }
+
+        const feedback = this.geissFeedbackCanvas;
+        const scratch = this.geissScratchCanvas;
+        if (feedback.width !== pixelWidth || feedback.height !== pixelHeight) {
+            feedback.width = pixelWidth;
+            feedback.height = pixelHeight;
+            this.geissNeedsReset = true;
+        }
+        if (scratch.width !== pixelWidth || scratch.height !== pixelHeight) {
+            scratch.width = pixelWidth;
+            scratch.height = pixelHeight;
+        }
+
+        const feedbackContext = feedback.getContext('2d');
+        const scratchContext = scratch.getContext('2d');
+        if (!feedbackContext || !scratchContext) return;
+
+        const averageRange = (start: number, end: number): number => {
+            const safeEnd = Math.min(end, this.frequencyData.length);
+            let total = 0;
+            for (let i = start; i < safeEnd; i++) total += this.frequencyData[i];
+            return safeEnd > start ? total / ((safeEnd - start) * 255) : 0;
+        };
+
+        const bass = averageRange(0, 14);
+        const mid = averageRange(14, 72);
+        const treble = averageRange(72, 160);
+        const energy = bass * 0.52 + mid * 0.33 + treble * 0.15;
+        const now = performance.now();
+        this.geissPhase += 0.006 + energy * 0.042 + this.beatDetection.screenFlashIntensity * 0.018;
+
+        // Keep this visual on the dual-horizon preset represented by hd009.jpg.
+        // Other Geiss modes pull material into a central column or lens; this
+        // preset deliberately maintains two open waveform planes.
+
+        scratchContext.setTransform(1, 0, 0, 1, 0, 0);
+        scratchContext.globalCompositeOperation = 'copy';
+        scratchContext.drawImage(feedback, 0, 0);
+
+        feedbackContext.setTransform(1, 0, 0, 1, 0, 0);
+        feedbackContext.globalCompositeOperation = 'source-over';
+        if (this.geissNeedsReset) {
+            feedbackContext.fillStyle = '#000000';
+            feedbackContext.fillRect(0, 0, pixelWidth, pixelHeight);
+            this.geissNeedsReset = false;
+        }
+
+        const centerX = pixelWidth / 2;
+        const centerY = pixelHeight / 2;
+        const minDimension = Math.min(pixelWidth, pixelHeight);
+
+        // Warp the previous frame in horizontal bands. Varying source offsets,
+        // local zoom and shear creates the fluid tunnels, horizons and smoke
+        // fields characteristic of Geiss without requiring per-pixel shaders.
+        feedbackContext.fillStyle = '#000000';
+        feedbackContext.fillRect(0, 0, pixelWidth, pixelHeight);
+        feedbackContext.globalAlpha = 0.975 - treble * 0.015;
+        const sliceHeight = Math.max(2, Math.ceil(pixelHeight / 72));
+        const zoom = 1.008 + bass * 0.014;
+
+        for (let sourceY = 0; sourceY < pixelHeight; sourceY += sliceHeight) {
+            const normalizedY = (sourceY + sliceHeight / 2 - centerY) / Math.max(1, centerY);
+            let waveOffset = 0;
+            let verticalOffset = 0;
+            let localZoom = zoom;
+
+            switch (this.geissWarpMode) {
+                case 0: // mirrored horizon / forward flight
+                    waveOffset = Math.sin(normalizedY * 5.5 + this.geissPhase * 1.7)
+                        * pixelWidth * (0.0025 + mid * 0.008 + this.beatDetection.screenFlashIntensity * 0.004);
+                    verticalOffset = Math.sign(normalizedY)
+                        * (1.15 + energy * 4.8 + this.beatDetection.screenFlashIntensity * 2.6);
+                    localZoom += (1 - Math.min(1, Math.abs(normalizedY)))
+                        * (0.007 + bass * 0.012 + this.beatDetection.screenFlashIntensity * 0.006);
+                    break;
+                case 1: // liquid lateral folds
+                    waveOffset = Math.sin(normalizedY * 9 + this.geissPhase * 2.2) * pixelWidth * (0.006 + mid * 0.01);
+                    verticalOffset = Math.cos(normalizedY * 4 - this.geissPhase) * (0.7 + bass * 2);
+                    break;
+                case 2: // breathing lens
+                    waveOffset = normalizedY * Math.sin(this.geissPhase * 1.5) * pixelWidth * 0.012;
+                    verticalOffset = normalizedY * (1.2 + bass * 3.2);
+                    localZoom += (1 - Math.abs(normalizedY)) * 0.009;
+                    break;
+                default: // twisting smoke column
+                    waveOffset = Math.sin(normalizedY * Math.PI + this.geissPhase * 2.5) * pixelWidth * (0.01 + treble * 0.012);
+                    verticalOffset = Math.sin(normalizedY * 7 - this.geissPhase) * (0.8 + energy * 2.2);
+                    localZoom += normalizedY * normalizedY * 0.006;
+                    break;
+            }
+
+            const destinationWidth = pixelWidth * localZoom;
+            const destinationX = (pixelWidth - destinationWidth) / 2 + waveOffset;
+            feedbackContext.drawImage(
+                scratch,
+                0, sourceY, pixelWidth, Math.min(sliceHeight + 1, pixelHeight - sourceY),
+                destinationX, sourceY + verticalOffset, destinationWidth, sliceHeight + 1
+            );
+        }
+
+        // Gentle decay preserves long trails while preventing the image from
+        // saturating to white. It also adds the subtle textured motion seen in
+        // the original error-diffused renderer.
+        feedbackContext.globalAlpha = 1;
+        feedbackContext.fillStyle = `rgba(0, 0, 4, ${0.018 + treble * 0.016})`;
+        feedbackContext.fillRect(0, 0, pixelWidth, pixelHeight);
+
+        // RenderWave() in the original offered six geometries and smoothed each
+        // new sample heavily against the previous one. The two channels below
+        // use a phase-offset copy because Web Audio supplies a mono time array.
+        const sampleWave = (index: number, channelOffset: number): number => {
+            const sampleIndex = (index + channelOffset) % this.timeData.length;
+            return (this.timeData[sampleIndex] - 128) / 128;
+        };
+        const frame = now / (1000 / 30);
+        const colorDrift = 7 * Math.sin(frame * 0.007 + 29) + 5 * Math.cos(frame * 0.0057 + 27);
+        const beatLift = Math.max(energy, this.beatDetection.screenFlashIntensity);
+        const seedBrightness = Math.min(255, 105 + energy * 80 + beatLift * 95);
+        const channel = (phaseA: number, phaseB: number): number => Math.max(0, Math.min(255,
+            seedBrightness * 1.07
+            * (1 + 0.3 * Math.sin(frame * 0.0063 + phaseA - colorDrift))
+            * (1 + 0.2 * Math.cos(frame * 0.0051 + phaseB + colorDrift))
+        ));
+        const red = Math.min(255, channel(10, 37) * 0.68 + 32);
+        const green = Math.min(255, channel(32, 16) * 0.76 + 42);
+        const blue = Math.min(255, channel(87, 25) * 0.96 + 58);
+        const seedAlpha = Math.min(0.96, 0.34 + energy * 0.34 + beatLift * 0.3);
+        const lineRotation = Math.sin(this.geissPhase * 0.42) * (0.16 + mid * 0.15)
+            + Math.sin(this.geissPhase * 0.17) * 0.045
+            + Math.sin(this.geissPhase * 3.8) * this.beatDetection.screenFlashIntensity * 0.055;
+        const musicShiftX = Math.sin(this.geissPhase * 2.1) * pixelWidth * mid * 0.12
+            + Math.sin(this.geissPhase * 5.3) * pixelWidth * this.beatDetection.screenFlashIntensity * 0.055;
+        const musicShiftY = Math.cos(this.geissPhase * 1.7) * pixelHeight * bass * 0.09
+            + Math.sin(this.geissPhase * 4.4) * pixelHeight * this.beatDetection.screenFlashIntensity * 0.035;
+        const rotationCos = Math.cos(lineRotation);
+        const rotationSin = Math.sin(lineRotation);
+        const maximumWaveExcursion = minDimension * 0.58;
+        const edgeSafetyMargin = Math.max(48, pixelWidth * 0.12);
+        const rotationOverscan = (
+            Math.abs(musicShiftX)
+            + (pixelHeight * 0.5 + Math.abs(musicShiftY) + maximumWaveExcursion) * Math.abs(rotationSin)
+            + edgeSafetyMargin
+        ) / Math.max(0.55, Math.abs(rotationCos));
+        const sceneTime = now % 28000;
+        const singleLineActive = sceneTime >= 22000;
+
+        const drawWavePath = (waveformMode: number, channelOffset: number, alpha: number): void => {
+            feedbackContext.beginPath();
+            let smoothedWave = sampleWave(0, channelOffset);
+            const pathPoints = this.timeData.length + 72;
+            for (let i = 0; i < pathPoints; i++) {
+                const progress = i / Math.max(1, pathPoints - 1);
+                const sourceProgress = Math.max(0, Math.min(1, (progress * (pixelWidth + rotationOverscan * 2) - rotationOverscan) / pixelWidth));
+                const sampleIndex = Math.min(this.timeData.length - 1, Math.floor(sourceProgress * (this.timeData.length - 1)));
+                smoothedWave = smoothedWave * 0.76 + sampleWave(sampleIndex, channelOffset) * 0.24;
+                const otherWave = sampleWave(sampleIndex, channelOffset + 67);
+                const frequencyIndex = Math.min(this.frequencyData.length - 1, Math.floor(progress * this.frequencyData.length * 0.8));
+                const frequencyVariance = this.frequencyData[frequencyIndex] / 255;
+                const reactiveDensity = 17 + Math.round(treble * 15);
+                const harmonicVariance = Math.sin(progress * Math.PI * reactiveDensity + this.geissPhase * (3.1 + treble * 4.5) + channelOffset)
+                    * frequencyVariance * (0.045 + treble * 0.16 + beatLift * 0.055);
+                const broadVariance = Math.sin(progress * Math.PI * 5 - this.geissPhase * 1.8 + channelOffset * 0.2)
+                    * mid * (0.1 + beatLift * 0.09);
+                const variedWave = smoothedWave + harmonicVariance + broadVariance;
+                const amplitude = minDimension * (0.1 + energy * 0.32 + beatLift * 0.1);
+                let x = -rotationOverscan + progress * (pixelWidth + rotationOverscan * 2);
+                let y = centerY + variedWave * amplitude;
+
+                switch (waveformMode) {
+                    case 2: // dual horizontal stereo traces
+                        y = pixelHeight * (singleLineActive ? 0.5 : (channelOffset === 0 ? 0.42 : 0.58))
+                            + variedWave * amplitude * 0.82;
+                        break;
+                    case 3: // vertical oscilloscope
+                        x = centerX + smoothedWave * amplitude;
+                        y = progress * pixelHeight;
+                        break;
+                    case 4: // opposing diagonal traces
+                        x = progress * pixelWidth + smoothedWave * amplitude * 0.55;
+                        y = channelOffset === 0 ? progress * pixelHeight : (1 - progress) * pixelHeight;
+                        break;
+                    case 5: { // circular/radial waveform
+                        const angle = progress * Math.PI * 2;
+                        const radius = minDimension * 0.24 + smoothedWave * amplitude * 0.55;
+                        x = centerX + Math.cos(angle) * radius;
+                        y = centerY + Math.sin(angle) * radius;
+                        break;
+                    }
+                    case 6: { // X-Y oscilloscope mode
+                        const xyScale = minDimension * (0.22 + energy * 0.12);
+                        const rotation = Math.sin(this.geissPhase * 0.45);
+                        const rawX = smoothedWave * xyScale;
+                        const rawY = otherWave * xyScale;
+                        x = centerX + rawX * Math.cos(rotation) + rawY * Math.sin(rotation);
+                        y = centerY - rawX * Math.sin(rotation) + rawY * Math.cos(rotation);
+                        break;
+                    }
+                }
+
+                // Slowly roll the complete waveform field around the vanishing
+                // point while keeping the horizon recognizable. Overscan above
+                // guarantees that the rotated path still reaches both edges.
+                const pivotX = centerX + musicShiftX;
+                const pivotY = centerY + musicShiftY;
+                const offsetX = x - centerX;
+                const offsetY = y - centerY;
+                x = pivotX + offsetX * rotationCos - offsetY * rotationSin;
+                y = pivotY + offsetX * rotationSin + offsetY * rotationCos;
+
+                if (i === 0) feedbackContext.moveTo(x, y);
+                else feedbackContext.lineTo(x, y);
+            }
+            feedbackContext.strokeStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+            feedbackContext.lineWidth = 0.65 + bass * 1.65 + beatLift * 0.55;
+            feedbackContext.stroke();
+        };
+
+        feedbackContext.save();
+        feedbackContext.globalCompositeOperation = 'lighter';
+        feedbackContext.lineCap = 'round';
+        drawWavePath(this.geissWaveformMode, 0, seedAlpha);
+        if (!singleLineActive && (this.geissWaveformMode === 2 || this.geissWaveformMode === 4)) {
+            drawWavePath(this.geissWaveformMode, 23, seedAlpha * 0.82);
+        }
+
+        // Periodically inject a comet seed. The head spirals toward the music-
+        // shifted center; its fading tail then persists and bends in feedback.
+        const cometCycle = now % 19000;
+        if (cometCycle >= 12500) {
+            const cometProgress = (cometCycle - 12500) / 6500;
+            const cometAngle = cometProgress * Math.PI * 5.5 + this.geissPhase * 0.7;
+            const cometRadius = minDimension * (0.58 * (1 - cometProgress) + 0.025);
+            const cometCenterX = centerX + musicShiftX * 0.65;
+            const cometCenterY = centerY + musicShiftY * 0.65;
+            const tailPoints = 22;
+
+            for (let tail = tailPoints - 1; tail >= 0; tail--) {
+                const tailProgress = Math.max(0, cometProgress - tail * 0.0065);
+                const tailAngle = tailProgress * Math.PI * 5.5 + this.geissPhase * 0.7;
+                const tailRadius = minDimension * (0.58 * (1 - tailProgress) + 0.025);
+                const cometX = cometCenterX + Math.cos(tailAngle) * tailRadius;
+                const cometY = cometCenterY + Math.sin(tailAngle) * tailRadius * 0.72;
+                const tailStrength = 1 - tail / tailPoints;
+                const particleRadius = 0.35 + tailStrength * (0.8 + beatLift * 0.65);
+                const cometGlow = feedbackContext.createRadialGradient(cometX, cometY, 0, cometX, cometY, particleRadius * 2.6);
+                cometGlow.addColorStop(0, `rgba(255,255,255,${0.16 + tailStrength * 0.68})`);
+                cometGlow.addColorStop(0.28, `rgba(${blue},${green},255,${tailStrength * 0.5})`);
+                cometGlow.addColorStop(1, 'rgba(50,160,255,0)');
+                feedbackContext.fillStyle = cometGlow;
+                feedbackContext.beginPath();
+                feedbackContext.arc(cometX, cometY, particleRadius * 2.6, 0, Math.PI * 2);
+                feedbackContext.fill();
+            }
+        }
+        feedbackContext.restore();
+
+        this.canvasContext.save();
+        this.canvasContext.globalAlpha = 1;
+        this.canvasContext.globalCompositeOperation = 'source-over';
+        this.canvasContext.drawImage(feedback, 0, 0, width, height);
+
+        const vignette = this.canvasContext.createRadialGradient(width / 2, height / 2, Math.min(width, height) * 0.16, width / 2, height / 2, Math.max(width, height) * 0.68);
+        vignette.addColorStop(0, 'rgba(0,0,0,0)');
+        vignette.addColorStop(0.72, 'rgba(0,0,0,0.08)');
+        vignette.addColorStop(1, 'rgba(0,0,0,0.78)');
+        this.canvasContext.fillStyle = vignette;
+        this.canvasContext.fillRect(0, 0, width, height);
+        this.canvasContext.restore();
+    }
 
     /** Spinning vinyl record with grooves and label */
     private drawVinylTurntable(): void {
